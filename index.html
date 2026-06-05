@@ -95,7 +95,7 @@ html.ios-lite #skillCutin img{opacity:.32;filter:none;transform:scale(1);animati
 #bossFill{height:100%;background:linear-gradient(90deg,#7b241c,#e74c3c)}
 #bossText{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:white;font-family:Consolas,monospace}
 #mobileHud{display:none}
-#right{min-width:0;border-left:2px solid var(--line);background:var(--panel);display:flex;flex-direction:column}
+#right{min-width:0;border-left:2px solid var(--line);background:var(--panel);display:flex;flex-direction:column;position:relative}
 .tabs{height:30px;display:flex;border-bottom:1px solid var(--line)}
 .tab{flex:1;border:0;border-right:1px solid #241707;background:#100b04;color:var(--muted);font-size:11px;cursor:pointer}
 .tab.on{color:var(--gold);box-shadow:inset 0 -2px 0 var(--gold)}
@@ -116,6 +116,15 @@ html.ios-lite #skillCutin img{opacity:.32;filter:none;transform:scale(1);animati
 .pinBtn{margin-top:5px;border:1px solid #8b6420;background:#1d1305;color:#f0c040;border-radius:3px;padding:3px 8px;font-size:9px;cursor:pointer}
 .pinBtn.on{border-color:#39ff14;color:#9eff9e;background:#071006}
 .eventBox{margin-top:7px;border:1px solid #375b92;background:#04101b;border-radius:5px;padding:6px;color:#abd2ff;font-size:10px;line-height:1.45}
+#unitQuickBar{position:relative;z-index:20;display:none;flex:0 0 auto;align-items:center;gap:5px;flex-wrap:wrap;border-top:1px solid var(--line);padding:6px 7px;background:linear-gradient(90deg,#140d04,#070501);font-size:10px;color:var(--muted)}
+#unitQuickBar.on{display:flex!important}
+.unitQuickTitle{min-width:0;max-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:900;color:var(--gold)}
+.unitQuickChip{border:1px solid #4b3210;background:#100904;color:#d8c08a;border-radius:999px;padding:2px 7px;font-size:9px;white-space:nowrap}
+.unitQuickChip.done{border-color:#2f9d46;color:#8fffb0;background:#061105}
+.unitQuickBtn{border:1px solid #d4a017;background:#1b1206;color:#ffd66b;border-radius:5px;padding:4px 9px;font-size:10px;font-weight:900;cursor:pointer;white-space:nowrap}
+.unitQuickBtn.recipe{border-color:#45a94d;color:#9af0a0;background:#071006}
+.unitQuickBtn.recipe.ready{box-shadow:0 0 0 1px #3cff5644;background:#0a1808}
+.unitQuickBtn:disabled{opacity:.45;cursor:not-allowed}
 #selected{flex:0 0 auto;border-top:1px solid var(--line);padding:7px;font-size:10px;color:var(--muted);max-height:245px;overflow-y:auto}
 .hintTitle{margin-top:6px;padding-top:5px;border-top:1px solid #2b1b08;color:#d8c08a;font-weight:700}
 .hintRow{margin-top:4px;padding:5px;border:1px solid #2c1c08;background:#080602;border-radius:4px}
@@ -137,12 +146,9 @@ html.ios-lite #skillCutin img{opacity:.32;filter:none;transform:scale(1);animati
 .mini canvas{width:100%;height:100%;display:block}
 .mlabel{position:absolute;left:4px;top:2px;font:10px Consolas;color:var(--gold)}
 @media(min-width:901px){
-  #bottom{overflow:hidden}
-  #miniPanel{height:174px!important;max-height:174px!important;min-height:0;overflow:hidden;align-self:start}
-  #miniPanel .panelTitle{display:none}
-  #minis{flex:0 0 174px!important;height:174px!important;max-height:174px;min-height:0;box-sizing:border-box;grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(0,1fr))!important;align-content:stretch;overflow:hidden}
-  .mini{height:auto;min-height:0}
-  .mini[data-view="4"] .mlabel{font-weight:900;color:#8ed8ff}
+  #miniPanel{height:174px;max-height:174px;overflow:hidden;align-self:start}
+  #minis{height:174px;max-height:174px;box-sizing:border-box;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));overflow:hidden}
+  .mini{min-height:0}
 }
 #actions{min-width:0;display:flex;flex-direction:column;padding:7px;gap:5px}
 .row{display:flex;gap:5px}
@@ -240,6 +246,11 @@ html.min-fx #skillCutin{display:none!important}
   .tab{font-size:10px}
   .scroll{padding:4px;min-height:0;overflow-x:auto;overflow-y:hidden;white-space:nowrap;-webkit-overflow-scrolling:touch}
   #panelInv,#panelPlaced,#panelLog{min-height:0;height:53px}
+  #unitQuickBar{position:fixed;left:0;right:0;bottom:calc(132px + 29px + env(safe-area-inset-bottom));z-index:45;min-height:34px;max-height:34px;padding:4px 5px;gap:4px;flex-wrap:nowrap;overflow-x:auto;overflow-y:visible;-webkit-overflow-scrolling:touch;border-top:1px solid #d4a017;border-bottom:1px solid #3d2a0d;box-shadow:0 -4px 12px #0008,0 4px 12px #0008}
+  .unitQuickTitle{max-width:86px;font-size:9px}
+  .unitQuickChip{font-size:8px;padding:1px 5px}
+  .unitQuickBtn{font-size:9px;padding:5px 7px;line-height:1}
+  .unitQuickBtn.info{border-color:#8b6420;color:#ffd66b;background:#1b1005}
   #selected{max-height:29px;min-height:29px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:8.5px;line-height:1.2;padding:4px 54px 4px 6px;position:relative;cursor:pointer}
   #selected::after{content:"정보";position:absolute;right:6px;top:50%;transform:translateY(-50%);border:1px solid #8b6420;border-radius:999px;padding:2px 7px;background:#1b1005;color:#ffd66b;font-size:9px}
   #selected button{font-size:9px!important;padding:2px 5px!important;margin-top:2px!important}
@@ -258,13 +269,11 @@ html.min-fx #skillCutin{display:none!important}
   #bottom{height:132px;flex:0 0 calc(132px + env(safe-area-inset-bottom));grid-template-columns:120px minmax(0,1fr);width:100vw;max-width:100vw;overflow:hidden;padding-bottom:env(safe-area-inset-bottom)}
   #miniPanel{display:flex;border-right:2px solid var(--line);border-bottom:0;width:120px;min-width:0}
   #miniPanel .panelTitle{display:none}
-  #minis{grid-template-columns:1fr 1.35fr;grid-template-rows:repeat(3,1fr);gap:2px;padding:3px;min-height:0;min-width:0}
+  #minis{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:2px;padding:3px;min-height:0;min-width:0}
   .mini{min-height:0;min-width:0}
   .mlabel{font-size:8px;left:2px;top:1px}
-  .mini[data-view="4"]{grid-column:2;grid-row:1 / span 3;border-color:#315b87}
-  .mini[data-view="4"] .mlabel{left:50%;top:50%;transform:translate(-50%,-50%);font-size:10px;font-weight:900;color:#8ed8ff;text-align:center;text-shadow:0 1px 3px #000;white-space:nowrap}
   #actions{padding:4px;gap:3px;width:100%;min-width:0;max-width:100%;overflow:hidden}
-  #actions .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;min-width:0;max-width:100%}
+  #actions .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;min-width:0;max-width:100%;flex:1 1 0;min-height:0}
   #actions .row:first-child{grid-template-columns:repeat(2,minmax(0,1fr))}
   #actions .row:last-child{grid-template-columns:repeat(4,minmax(0,1fr))}
   #waveInfo{display:none}
@@ -272,6 +281,7 @@ html.min-fx #skillCutin{display:none!important}
   .wcBtn[data-mobile-label]{font-size:0}
   .wcBtn[data-mobile-label]::before{content:attr(data-mobile-label);font-size:10px}
   .wcBtn[data-mobile-label] #freeCnt{font-size:10px;margin-left:2px}
+  #actions .wcBtn{height:100%;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.1}
   .wcBtn{padding:5px 2px;font-size:9px}
   .wcBtn.big{font-size:10px}
   #typeCode{padding:6px 7px;font-size:11px}
@@ -301,6 +311,8 @@ html.min-fx #skillCutin{display:none!important}
   .speed button,.tiny-btn{padding:4px 8px;font-size:11px}
   #main{grid-template-rows:minmax(210px,1fr) 104px}
   #panelInv,#panelPlaced,#panelLog{height:50px}
+  #unitQuickBar{bottom:calc(124px + 26px + env(safe-area-inset-bottom));min-height:33px;max-height:33px}
+  .unitQuickTitle{max-width:72px}
   #selected{max-height:26px;min-height:26px;font-size:8px}
   .unitCard{width:108px;min-height:42px}
   #bottom{height:124px;flex-basis:calc(124px + env(safe-area-inset-bottom));grid-template-columns:108px minmax(0,1fr)}
@@ -343,6 +355,7 @@ html.min-fx #skillCutin{display:none!important}
       <div id="panelInv" class="scroll"></div>
       <div id="panelPlaced" class="scroll" style="display:none"></div>
       <div id="panelLog" class="scroll" style="display:none"></div>
+      <div id="unitQuickBar"></div>
       <div id="selected">유닛을 선택하세요</div>
     </aside>
   </div>
@@ -2220,7 +2233,7 @@ function damage(u,m,dmgMult=1){
   if(u.luffyCombo&&Math.random()<u.extraProc){
     let comboDmg=Math.max(1,u.atk*2.5+u.extraFlat);
     m.hp-=comboDmg;
-    m.stun=Math.max(m.stun,u.luffyComboStun||1.3);
+    applyUnitStun(u,m,u.luffyComboStun||1.3);
     burst(m.x,m.y,"#ff934d",16);
     impactFx(m.x,m.y,"magic",6);
     floatText(m.x,m.y-18,"JET x2","#ff934d",18);
@@ -2241,7 +2254,7 @@ function damage(u,m,dmgMult=1){
     if(rz<0.25){
       let crit10=d*3.5+u.atk*2;
       let fd=Math.max(1,crit10-m.armor);
-      m.hp-=fd; m.stun=Math.max(m.stun||0,3.0);
+      m.hp-=fd; applyUnitStun(u,m,3.0);
       floatText(m.x,m.y-26,"이강력참!","#ffd700",17);
       impactFx(m.x,m.y,"phys",_LITE?3:7);
     }
@@ -2252,7 +2265,7 @@ function damage(u,m,dmgMult=1){
       zoroAoe(u,m.x,m.y,r415,base572,0,false);
       // 단일 150% 추가 + 2초 스턴
       let single_extra=Math.max(1,base572*1.5-m.armor);
-      m.hp-=single_extra; m.stun=Math.max(m.stun||0,2.0);
+      m.hp-=single_extra; applyUnitStun(u,m,2.0);
       floatText(m.x,m.y-28,"사자의 노래!","#ffee88",17);
       impactFx(m.x,m.y,"phys",_LITE?3:7);
     }
@@ -2305,7 +2318,7 @@ function damage(u,m,dmgMult=1){
       luffyAoe(u,m.x,m.y,r425,jd_magic,0,true);
       let fd2=Math.max(1,jd_phys-m.armor);
       m.hp-=fd2;
-      m.stun=Math.max(m.stun||0,1.3);
+      applyUnitStun(u,m,1.3);
       // 33% 둔화 2초
       G.monsters.forEach(o=>{
         if(o.alive&&Math.hypot(o.x-m.x,o.y-m.y)<=r425)
@@ -2334,7 +2347,7 @@ function damage(u,m,dmgMult=1){
     if(Math.random()<elephantProb){
       let elephantDmg=u.atk*(m.boss||m.enraged?7:4.2);
       let efd=Math.max(1,elephantDmg-m.armor);
-      m.hp-=efd; m.stun=Math.max(m.stun||0,2.0);
+      m.hp-=efd; applyUnitStun(u,m,2.0);
       floatText(m.x,m.y-30,"엘리펀트 건!","#ffcc00",18);
       impactFx(m.x,m.y,"phys",_LITE?3:8);
     }
@@ -2349,7 +2362,7 @@ function damage(u,m,dmgMult=1){
       let crit_dmg=d*3.5+u.atk*3;
       let fd=Math.max(1,crit_dmg-m.armor);
       m.hp-=fd;
-      m.stun=Math.max(m.stun||0,2.0);
+      applyUnitStun(u,m,2.0);
       floatText(m.x,m.y-28,"패기의 검술!","#ffd700",17);
       impactFx(m.x,m.y,"phys",_LITE?3:7);
     }
@@ -2787,7 +2800,7 @@ function zoroAoe(u, cx, cy, radius, dmg, stun_sec, magic=false){
     let scaled=dmg*AOE_DAMAGE_MULT;
     let fd=applyResistDamage(scaled,magic?m.mres:m.armor,m);
     m.hp-=fd;
-    if(stun_sec>0) m.stun=Math.max(m.stun||0, stun_sec);
+    if(stun_sec>0) applyUnitStun(u,m,stun_sec);
     burst(m.x,m.y,magic?"#88bbff":"#ffe060",4);
     floatText(m.x,m.y-16,Math.floor(fd/10000)+"만",magic?"#88bbff":"#ffe060",11);
     if(m.hp<=0&&m.alive){m.alive=false;G.kills++;G.gold+=Math.floor(m.reward*(1+G.mods.gold))}
@@ -2849,7 +2862,7 @@ function updateZoroSkills(u, dt2){
         let mfd=Math.max(1,magic_dmg-m.mres);
         let pfd=Math.max(1,phys_dmg-m.armor);
         m.hp-=mfd+pfd;
-        m.stun=Math.max(m.stun||0,3.0); // 저항무시 3초 스턴
+        applyUnitStun(u,m,3.0); // 저항무시 3초 스턴
         if(m.hp<=0&&m.alive){m.alive=false;G.kills++;G.gold+=Math.floor(m.reward*(1+G.mods.gold))}
       });
       // 연속타 큐 등록 (1.15초간 0.15초마다 12만)
@@ -2872,7 +2885,7 @@ function luffyAoe(u, cx, cy, radius, dmg, stun_sec, magic=true){
     let scaled=dmg*AOE_DAMAGE_MULT;
     let fd=applyResistDamage(scaled,magic?m.mres:m.armor,m);
     m.hp-=fd;
-    if(stun_sec>0) m.stun=Math.max(m.stun||0,stun_sec);
+    if(stun_sec>0) applyUnitStun(u,m,stun_sec);
     burst(m.x,m.y,magic?"#ff6030":"#ffd060",4);
     floatText(m.x,m.y-18,Math.floor(fd/10000)+"만",magic?"#ff8844":"#ffd700",12);
     if(m.hp<=0&&m.alive){m.alive=false;G.kills++;G.gold+=Math.floor(m.reward*(1+G.mods.gold))}
@@ -2922,7 +2935,7 @@ function shanksAoeDmg(u, cx, cy, radius, dmg, stun_sec, magic=true){
     let scaled=dmg*AOE_DAMAGE_MULT;
     let finalDmg = magic ? Math.max(1, scaled - m.mres) : Math.max(1, scaled - m.armor);
     m.hp -= finalDmg;
-    if(stun_sec>0) m.stun=Math.max(m.stun||0, stun_sec);
+    if(stun_sec>0) applyUnitStun(u,m,stun_sec);
     floatText(m.x,m.y-20,Math.floor(finalDmg/10000)+"만",magic?"#c0aaff":"#ffd700",13);
     burst(m.x,m.y,"#c060ff",5);
     if(m.hp<=0&&m.alive){m.alive=false;G.kills++;G.gold+=Math.floor(m.reward*(1+G.mods.gold))}
@@ -2981,7 +2994,7 @@ function updateShanksSkills(u, dt2){
         ? m.hp*0.10          // 보스: 현재체력 10%
         : m.max*0.15) * AOE_DAMAGE_MULT;        // 일반: 전체체력 15%
       m.hp-=bonus;
-      m.stun=Math.max(m.stun||0,3.0);
+      applyUnitStun(u,m,3.0);
       if(m.hp<=0&&m.alive){m.alive=false;G.kills++;G.gold+=Math.floor(m.reward*(1+G.mods.gold))}
     });
     let sb2=activeStory(),sp2=storyCenter();
@@ -3020,7 +3033,7 @@ function updateShanksSkills(u, dt2){
         if(roll<0.0725){extra=(m.max*0.06+u.atk*4)*AOE_DAMAGE_MULT;stun2=3.0;shanksAoeDmg(u,m.x,m.y,auraR,u.atk*1.8,0,true)}
         else if(roll<0.16){extra=(m.max*0.03+u.atk*4)*AOE_DAMAGE_MULT;}
         m.hp-=Math.max(1,pct+extra-m.mres);
-        m.stun=Math.max(m.stun||0,stun2);
+        applyUnitStun(u,m,stun2);
         if(m.hp<=0&&m.alive){m.alive=false;G.kills++;G.gold+=Math.floor(m.reward*(1+G.mods.gold))}
       }
     });
@@ -3574,11 +3587,11 @@ function procHakiSword(u,m){
   if(!hs||Math.random()>=(hs.prob||0))return;
   let half=G.tile*(hs.tiles||3)/2,raw=u.atk*(hs.mult||3)+(hs.flat||1000),dmg=applyResistDamage(raw,m.armor||0,m),hit=0;
   m.hp-=dmg;
-  m.stun=Math.max(m.stun||0,hs.stunSingle||.75);
+  applyUnitStun(u,m,hs.stunSingle||.75);
   G.monsters.forEach(o=>{
     if(!o.alive)return;
     if(Math.abs(o.x-m.x)<=half&&Math.abs(o.y-m.y)<=half){
-      o.stun=Math.max(o.stun||0,hs.stunArea||2);
+      applyUnitStun(u,o,hs.stunArea||2);
       burst(o.x,o.y,"#ffd700",10);
       hit++;
     }
@@ -3686,7 +3699,7 @@ function procChargeBuster(u,m){
     if(!o.alive||Math.abs(o.x-m.x)>half||Math.abs(o.y-m.y)>half)return;
     let dmg=magicSkillDamage(o,u.atk*(cb.mult||3.7));
     o.hp-=dmg;
-    o.stun=Math.max(o.stun||0,cb.stun||3);
+    applyUnitStun(u,o,cb.stun||3);
     burst(o.x,o.y,"#8ed8ff",18);
     impactFx(o.x,o.y,"magic",_LITE?3:7);
     floatText(o.x,o.y-18,Math.floor(dmg).toLocaleString(),"#9de7ff",18);
@@ -3703,7 +3716,7 @@ function procGalaxyImpact(u,m){
     if(!o.alive||Math.abs(o.x-m.x)>half||Math.abs(o.y-m.y)>half)return;
     let dmg=applyResistDamage((gi.flat||5000)+u.atk*(gi.atkMult||1.4),o.armor||0,o);
     o.hp-=dmg;
-    o.stun=Math.max(o.stun||0,gi.stun||2.5);
+    applyUnitStun(u,o,gi.stun||2.5);
     burst(o.x,o.y,"#ffd36b",18);
     impactFx(o.x,o.y,"phys",_LITE?3:7);
     floatText(o.x,o.y-18,Math.floor(dmg).toLocaleString(),"#fff2a8",18);
@@ -3720,7 +3733,7 @@ function procWindFruit(u,m){
     if(!o.alive||Math.abs(o.x-m.x)>half||Math.abs(o.y-m.y)>half)return;
     let dmg=magicSkillDamage(o,u.atk*(wf.mult||3.8));
     o.hp-=dmg;
-    o.stun=Math.max(o.stun||0,wf.stun||2.5);
+    applyUnitStun(u,o,wf.stun||2.5);
     burst(o.x,o.y,"#b9ffd0",16);
     impactFx(o.x,o.y,"magic",_LITE?3:7);
     floatText(o.x,o.y-18,Math.floor(dmg).toLocaleString(),"#c9ffe0",18);
@@ -3757,7 +3770,7 @@ function procBigMomMadness(u,m){
     if(!o.alive||Math.abs(o.x-m.x)>half||Math.abs(o.y-m.y)>half)return;
     let dmg=magicSkillDamage(o,u.atk*(bm.mult||4.5));
     o.hp-=dmg;
-    o.stun=Math.max(o.stun||0,bm.stun||2.5);
+    applyUnitStun(u,o,bm.stun||2.5);
     burst(o.x,o.y,"#ff8bd6",18);
     impactFx(o.x,o.y,"magic",_LITE?3:7);
     floatText(o.x,o.y-18,Math.floor(dmg).toLocaleString(),"#ffb8e5",18);
@@ -3776,7 +3789,7 @@ function procPunkGibson(u,m){
       let dmg=magicSkillDamage(o,pg.damage||5000);
       if(dist(o,m)<=((pg.centerRadius||250)/40)*G.tile)dmg*=1+(pg.centerBonus||.5);
       o.hp-=dmg;
-      o.stun=Math.max(o.stun||0,pg.stun||2);
+      applyUnitStun(u,o,pg.stun||2);
       burst(o.x,o.y,"#8ed8ff",16);
       impactFx(o.x,o.y,"magic",_LITE?3:7);
       floatText(o.x,o.y-18,Math.floor(dmg).toLocaleString(),"#9de7ff",18);
@@ -3825,7 +3838,7 @@ function procBlackBlade(u,m){
         if(o.boss)dmg+=magicSkillDamage(o,bb.bossFlat||300);
         else{
           dmg+=magicSkillDamage(o,u.atk*(bb.lineExtra||.20));
-          o.stun=Math.max(o.stun||0,bb.lineStun||.5);
+          applyUnitStun(u,o,bb.lineStun||.5);
         }
       }
       o.hp-=dmg;
@@ -7898,6 +7911,128 @@ window.addEventListener("resize",()=>{if(!mobileUiActive())closeMobileInfoSheet(
   const __deckStart=start;
   start=function(){G.targetMode=G.targetMode||"auto";G.bossSurvivalWarned={};return __deckStart()};
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",syncTargetControls);else syncTargetControls();
+})();
+// ===== SELECTED UNIT QUICK ACTION BAR =====
+(function(){
+  const TRAIT_ITEM_ID="item_trait";
+  function selectedUnit(){
+    return G&&G.sel&&!G.selMon?G.sel:null;
+  }
+  function hasTraitUpgrade(u){
+    return !!(u&&u.traitUpgrades&&u.traitUpgrades.main);
+  }
+  function traitPointCount(){
+    return (G.items&&G.items[TRAIT_ITEM_ID])||0;
+  }
+  function traitQuickHtml(u){
+    let tr=window.TRAIT_UNITS&&window.TRAIT_UNITS[u.id];
+    if(!tr)return "";
+    let done=hasTraitUpgrade(u),owned=traitPointCount();
+    if(done)return '<span class="unitQuickChip done">특성완료: '+esc(tr[1])+'</span>';
+    return '<button class="unitQuickBtn" '+(owned<1?'disabled':'')+' onclick="unlockTraitUpgrade('+u.uid+')">특성강화 1P</button><span class="unitQuickChip">포인트 '+owned+'</span>';
+  }
+  function tierUpgradeQuickHtml(u){
+    if(typeof tierUpgradeKeyFor!=="function"||typeof tierUpgradeRuleByKey!=="function")return "";
+    let key=tierUpgradeKeyFor(u),rule=key?tierUpgradeRuleByKey(key):null;
+    if(!key||!rule)return "";
+    let lv=typeof tierUpgradeLevelFor==="function"?tierUpgradeLevelFor(u):((G.tierUpgrades&&G.tierUpgrades[key])||0);
+    let label=(typeof TIER_UPGRADE_LABELS!=="undefined"&&TIER_UPGRADE_LABELS[key])||key;
+    if(lv>=rule.max)return '<span class="unitQuickChip done">'+esc(label)+' MAX</span>';
+    let cost=typeof tierUpgradeCostForKey==="function"?tierUpgradeCostForKey(key):Infinity;
+    let costText=Number.isFinite(cost)?cost.toLocaleString()+"G":"업글";
+    return '<button class="unitQuickBtn" '+(G.gold<cost?'disabled':'')+' onclick="buyTierUpgrade(\''+key+'\')">등급업 '+costText+'</button><span class="unitQuickChip">'+esc(label)+' '+lv+'/'+rule.max+'</span>';
+  }
+  function unitRecipeShortcuts(u){
+    if(!u||!Array.isArray(RECIPES))return [];
+    let d=def(u),baseLv=d.level||0,excluded=new Set(["random_only","etc","special_extra","navigation","lab","item"]);
+    return RECIPES.filter(r=>{
+      let out=UNIT_MAP[r.resultId];
+      if(!out||excluded.has(out.tier)||!r.conds||!r.conds.some(c=>c.id===u.id))return false;
+      let outLv=out.level||0;
+      if(baseLv>=1&&baseLv<=4)return outLv===baseLv+1;
+      if(baseLv>=5&&baseLv<=6)return outLv>baseLv&&outLv<=12;
+      return outLv>baseLv;
+    }).sort((a,b)=>{
+      let ca=canCraft(a)?1:0,cb=canCraft(b)?1:0,da=UNIT_MAP[a.resultId],db=UNIT_MAP[b.resultId];
+      return (cb-ca)||((da.level||99)-(db.level||99))||(da.name||"").localeCompare(db.name||"");
+    }).slice(0,2);
+  }
+  window.openRecipeShortcut=function(code){
+    let r=RECIPES.find(x=>String(x.code)===String(code)||String(x.resultId)===String(code));if(!r)return;
+    let d=UNIT_MAP[r.resultId];
+    G.pinnedRecipe=r.code;
+    G.recipeTier="all";
+    let input=$("recipeSearch");
+    if(input)input.value=d?d.name:"";
+    if(typeof renderRecipes==="function")renderRecipes();
+    if(typeof openModal==="function")openModal("combineModal");
+    if(typeof log==="function"&&d)log("상위 조합 보기: "+d.name,"sys");
+  };
+  window.openUnitQuickInfo=function(){
+    if(typeof syncMobileInfoSheet==="function")syncMobileInfoSheet();
+    if(typeof mobileUiActive==="function"&&mobileUiActive()&&typeof openMobileInfoSheet==="function"){openMobileInfoSheet();return}
+    let el=$("selected");
+    if(el&&typeof el.scrollIntoView==="function")el.scrollIntoView({block:"nearest"});
+  };
+  function recipeQuickHtml(u){
+    let rows=unitRecipeShortcuts(u);
+    if(!rows.length)return "";
+    return rows.map(r=>{
+      let d=UNIT_MAP[r.resultId],ok=canCraft(r),code=safeJsArg(r.code),label=d.name;
+      return '<button class="unitQuickBtn recipe '+(ok?'ready':'')+'" onclick=\'openRecipeShortcut('+code+')\'>'+esc(label)+'</button>';
+    }).join("");
+  }
+  function unitQuickHtml(){
+    let u=selectedUnit(),bar=$("unitQuickBar");
+    if(!bar||!u)return "";
+    let d=def(u),parts=[];
+    parts.push('<span class="unitQuickTitle" style="color:'+tier(d).color+'">'+esc(d.name)+'</span>');
+    let recipeHtml=recipeQuickHtml(u),traitHtml=traitQuickHtml(u);
+    if(recipeHtml)parts.push(recipeHtml);
+    if(traitHtml)parts.push(traitHtml);
+    parts.push('<button class="unitQuickBtn info" onclick="openUnitQuickInfo()">정보</button>');
+    if(parts.length<=1)return "";
+    return parts.join("");
+  }
+  window.syncUnitQuickBar=function(){
+    let bar=$("unitQuickBar");if(!bar)return;
+    let html=unitQuickHtml();
+    bar.classList.toggle("on",!!html);
+    if(bar.innerHTML!==html)bar.innerHTML=html;
+  };
+  const __quickSelInfo=selInfo;
+  selInfo=function(){__quickSelInfo();syncUnitQuickBar()};
+  const __quickUiLite=uiLite;
+  uiLite=function(){__quickUiLite();syncUnitQuickBar()};
+  function startQuickBarWatch(){
+    syncUnitQuickBar();
+    let selected=$("selected");
+    if(selected&&typeof MutationObserver!=="undefined"){
+      new MutationObserver(syncUnitQuickBar).observe(selected,{childList:true,subtree:true,characterData:true});
+    }
+    let bar=$("unitQuickBar");
+    if(bar&&!bar.dataset.quickBound){
+      bar.dataset.quickBound="1";
+      bar.addEventListener("click",e=>e.stopPropagation());
+      bar.addEventListener("touchstart",e=>e.stopPropagation(),{passive:true});
+    }
+    setInterval(syncUnitQuickBar,250);
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",startQuickBarWatch);else startQuickBarWatch();
+})();
+// ===== LOW TIER STUN GATE =====
+(function(){
+  const __lowTierStunGateDamage=damage;
+  damage=function(u,m,dmgMult){
+    if(canUnitApplyStun(u))return __lowTierStunGateDamage(u,m,dmgMult);
+    const before=new Map((G.monsters||[]).map(o=>[o,o.stun||0]));
+    const r=__lowTierStunGateDamage(u,m,dmgMult);
+    (G.monsters||[]).forEach(o=>{
+      const prev=before.has(o)?before.get(o):0;
+      if((o.stun||0)>prev)o.stun=prev;
+    });
+    return r;
+  };
 })();
 // ===== IN-GAME QUICK SETTINGS =====
 (function(){
