@@ -60,7 +60,7 @@ html.exe-client .speed button,html.exe-client .tiny-btn{padding:5px 12px;font-si
 html.exe-client #main{grid-template-columns:minmax(650px,1fr) 340px}
 html.exe-client #mapWrap{min-height:0}
 html.exe-client #right{box-shadow:inset 1px 0 0 #d4a01722}
-html.exe-client #bottom{height:220px;grid-template-columns:400px minmax(430px,1fr) 340px}
+html.exe-client #bottom{height:176px;grid-template-columns:340px minmax(430px,1fr) 340px}
 html.exe-client .tabs{height:34px}
 html.exe-client .tab{font-size:12px}
 html.exe-client .scroll{padding:8px}
@@ -69,7 +69,7 @@ html.exe-client .unitCard img{width:44px;height:38px}
 html.exe-client .uName{font-size:12px}
 html.exe-client .uSub{font-size:10px}
 html.exe-client #selected{max-height:312px;font-size:11px;line-height:1.45;padding:9px}
-html.exe-client #minis{gap:5px;padding:7px}
+html.exe-client #minis{gap:4px;padding:5px}
 html.exe-client #actions{padding:9px;gap:7px}
 html.exe-client .row{gap:7px}
 html.exe-client .wcBtn{padding:9px 7px;font-size:12px}
@@ -136,6 +136,14 @@ html.ios-lite #skillCutin img{opacity:.32;filter:none;transform:scale(1);animati
 .mini.on{border-color:var(--gold)}
 .mini canvas{width:100%;height:100%;display:block}
 .mlabel{position:absolute;left:4px;top:2px;font:10px Consolas;color:var(--gold)}
+@media(min-width:901px){
+  #bottom{overflow:hidden}
+  #miniPanel{height:174px!important;max-height:174px!important;min-height:0;overflow:hidden;align-self:start}
+  #miniPanel .panelTitle{display:none}
+  #minis{flex:0 0 174px!important;height:174px!important;max-height:174px;min-height:0;box-sizing:border-box;grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(0,1fr))!important;align-content:stretch;overflow:hidden}
+  .mini{height:auto;min-height:0}
+  .mini[data-view="4"] .mlabel{font-weight:900;color:#8ed8ff}
+}
 #actions{min-width:0;display:flex;flex-direction:column;padding:7px;gap:5px}
 .row{display:flex;gap:5px}
 .wcBtn{flex:1;border:1px solid var(--line2);background:linear-gradient(#33220b,#170f06);color:var(--gold);border-radius:4px;padding:7px 5px;cursor:pointer;font-size:11px;box-shadow:inset 0 1px #77521a}
@@ -247,23 +255,25 @@ html.min-fx #skillCutin{display:none!important}
   .uSub{font-size:8px;line-height:1.15}
   .roleTags,.pinBox,.eventBox{display:none}
   .countBadge{right:4px;top:4px;min-width:18px;padding:1px 4px;font-size:8px}
-  #bottom{height:132px;flex:0 0 calc(132px + env(safe-area-inset-bottom));grid-template-columns:84px minmax(0,1fr);width:100vw;max-width:100vw;overflow:hidden;padding-bottom:env(safe-area-inset-bottom)}
-  #miniPanel{display:flex;border-right:2px solid var(--line);border-bottom:0;width:84px;min-width:0}
+  #bottom{height:132px;flex:0 0 calc(132px + env(safe-area-inset-bottom));grid-template-columns:120px minmax(0,1fr);width:100vw;max-width:100vw;overflow:hidden;padding-bottom:env(safe-area-inset-bottom)}
+  #miniPanel{display:flex;border-right:2px solid var(--line);border-bottom:0;width:120px;min-width:0}
   #miniPanel .panelTitle{display:none}
-  #minis{grid-template-columns:1fr;grid-template-rows:repeat(4,1fr);gap:2px;padding:3px;min-height:0;min-width:0}
+  #minis{grid-template-columns:1fr 1.35fr;grid-template-rows:repeat(3,1fr);gap:2px;padding:3px;min-height:0;min-width:0}
   .mini{min-height:0;min-width:0}
   .mlabel{font-size:8px;left:2px;top:1px}
-  #actions{padding:5px;gap:4px;width:100%;min-width:0;max-width:100%;overflow:hidden}
-  #actions .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;min-width:0;max-width:100%}
+  .mini[data-view="4"]{grid-column:2;grid-row:1 / span 3;border-color:#315b87}
+  .mini[data-view="4"] .mlabel{left:50%;top:50%;transform:translate(-50%,-50%);font-size:10px;font-weight:900;color:#8ed8ff;text-align:center;text-shadow:0 1px 3px #000;white-space:nowrap}
+  #actions{padding:4px;gap:3px;width:100%;min-width:0;max-width:100%;overflow:hidden}
+  #actions .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;min-width:0;max-width:100%}
   #actions .row:first-child{grid-template-columns:repeat(2,minmax(0,1fr))}
-  #actions .row:last-child{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #actions .row:last-child{grid-template-columns:repeat(4,minmax(0,1fr))}
   #waveInfo{display:none}
   .wcBtn{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .wcBtn[data-mobile-label]{font-size:0}
   .wcBtn[data-mobile-label]::before{content:attr(data-mobile-label);font-size:10px}
   .wcBtn[data-mobile-label] #freeCnt{font-size:10px;margin-left:2px}
-  .wcBtn{padding:7px 3px;font-size:10px}
-  .wcBtn.big{font-size:11px}
+  .wcBtn{padding:5px 2px;font-size:9px}
+  .wcBtn.big{font-size:10px}
   #typeCode{padding:6px 7px;font-size:11px}
   #infoBody{font-size:11px;padding:5px}
   #log{height:84px}
@@ -293,9 +303,9 @@ html.min-fx #skillCutin{display:none!important}
   #panelInv,#panelPlaced,#panelLog{height:50px}
   #selected{max-height:26px;min-height:26px;font-size:8px}
   .unitCard{width:108px;min-height:42px}
-  #bottom{height:124px;flex-basis:calc(124px + env(safe-area-inset-bottom));grid-template-columns:72px minmax(0,1fr)}
-  #miniPanel{width:72px}
-  .wcBtn{font-size:9px;padding:6px 2px}
+  #bottom{height:124px;flex-basis:calc(124px + env(safe-area-inset-bottom));grid-template-columns:108px minmax(0,1fr)}
+  #miniPanel{width:108px}
+  .wcBtn{font-size:9px;padding:4px 2px}
   .wcBtn[data-mobile-label]::before,.wcBtn[data-mobile-label] #freeCnt{font-size:9px}
   .wcBtn.big{font-size:10px}
   #typeCode{font-size:10px;padding:5px 6px}
@@ -486,6 +496,8 @@ const UNIT_SOUND_MAP={
   "ord_181":"z","ord_323":"zoro_enma"
 };
 const RECIPES=ORD.recipes.filter(r=>UNIT_MAP[r.resultId]);
+const REMOVED_MYSTERIOUS_RECIPE_IDS=new Set(["ord_339","ord_279","ord_284","ord_283","ord_298","ord_282","ord_357","ord_341","ord_289","ord_340","ord_285","ord_300","ord_288"]);
+for(let i=RECIPES.length-1;i>=0;i--)if(REMOVED_MYSTERIOUS_RECIPE_IDS.has(RECIPES[i].resultId))RECIPES.splice(i,1);
 const COMMON=ORD.units.filter(u=>u.tier==="common");
 const SPECIAL=ORD.units.filter(u=>u.tier==="special");
 const COMMON_SHOP_UNITS=(()=>{let arr=COMMON.slice(),zombie=UNIT_MAP["ord_31"];if(zombie&&!arr.some(u=>u.id===zombie.id))arr.push(zombie);return arr})();
@@ -1557,6 +1569,23 @@ function addItem(id,n=1){G.items[id]=(G.items[id]||0)+n}
 function rareRerollMeta(tierName,source){return tierName==="rare"&&source?{rareRerollEligible:true,rareRerollSource:source}:{}}
 function addTierUnits(tierName,n,source=""){let pool=ORD.units.filter(u=>u.tier===tierName);for(let i=0;i<n&&pool.length;i++)addUnit(roll(pool).id,rareRerollMeta(tierName,source))}
 function addTierUnitsMix(tiers,source=""){tiers.forEach(x=>addTierUnits(x.tier,x.n,source))}
+function grantTreasureHuntReward(waveNo){
+  waveNo=+waveNo||0;
+  if(!waveNo||waveNo%2!==0)return false;
+  G.treasureHuntClaimed=G.treasureHuntClaimed||{};
+  if(G.treasureHuntClaimed[waveNo])return false;
+  G.treasureHuntClaimed[waveNo]=true;
+  let rollValue=Math.random(),tierName=rollValue<.05?"special":rollValue<.15?"uncommon":rollValue<.40?"common":rollValue<.50?"gold":"";
+  if(!tierName){announce("보물찾기 실패!",2400,"#ffb86b");log("[보물찾기] "+waveNo+"R 실패","sys");return false}
+  if(tierName==="gold"){G.gold+=1000;announce("보물찾기 성공! 1,000G 지급",3200,"#f0c040");log("[보물찾기] "+waveNo+"R 성공: 1,000G 획득","good");return true}
+  let pool=tierName==="common"?(COMMON.length?COMMON:ORD.units.filter(u=>u.tier==="common")):ORD.units.filter(u=>u.tier===tierName);
+  if(!pool.length){announce("보물찾기 실패!",2400,"#ffb86b");log("[보물찾기] "+waveNo+"R 실패: "+tierName+" 유닛 없음","warn");return false}
+  let d=roll(pool);addUnit(d.id);
+  let tierText=tierName==="special"?"특별함":tierName==="uncommon"?"안흔함":"흔함";
+  announce("보물찾기 성공! "+tierText+" 유닛 지급: "+d.name,3600,tierName==="special"?"#ffd700":tierName==="uncommon"?"#7dd3fc":"#4ade80");
+  log("[보물찾기] "+waveNo+"R 성공: "+tierText+" "+d.name+" 획득","good");
+  return true;
+}
 function questState(){let q=G.quests||(G.quests={});if(q.fastUnique===undefined)q.fastUnique=false;if(q.fastDestroy===undefined)q.fastDestroy=false;if(q.fastLegend===undefined)q.fastLegend=false;return q}
 function grantHiddenQuest(key,title,detail){
   let q=questState();if(q[key])return false;
@@ -1676,6 +1705,7 @@ function grantWaveEndRewardOnce(waveNo){
   G.gold+=b;G.freeRewards+=2;
   log("웨이브 "+waveNo+" 시간 종료 +"+b+"G / 흔함 보상 2회","good");
   if(waveNo===4){let d=SPECIAL[ri(SPECIAL.length)];addUnit(d.id);log("[4R 보상] 특별함 유닛 "+d.name+" 획득","good");announce("4R 보상: "+d.name)}
+  grantTreasureHuntReward(waveNo);
   return true;
 }
 function endWave(){let endedWave=G.wave;G.waveRun=false;grantWaveEndRewardOnce(endedWave);if(endedWave>=30&&G.storyDead<13&&!G.storyFailed){G.storyFailed=true;log("스토리 실패: 31라운드 전 13건물 파괴 필요","bad")}G.wave++;if(G.wave>75){showClearScreen();return}renderStory();renderAll();showWaveBreak(G.wave);}
@@ -2677,6 +2707,22 @@ function applyUnitAuras(){
   });
 }
 function activeFocusMon(){return G.focusMon&&G.focusMon.alive&&G.monsters.includes(G.focusMon)?G.focusMon:null}
+function monsterPathProgress(m){return(m?.idx||0)+((m?.prog||0)/(G.tile||40))}
+function shouldUseFinishTargeting(u){
+  let splash=0;
+  try{splash=typeof effectiveSplash==="function"?effectiveSplash(u):(u?.splash||0)}catch(e){splash=u?.splash||0}
+  return !(splash>0);
+}
+function targetCompare(u,focus,a,b){
+  if(focus){if(a===focus)return-1;if(b===focus)return 1}
+  let ao=a.outGrace||0,bo=b.outGrace||0;
+  if(ao>0||bo>0)return ao>0&&bo>0?ao-bo:bo-ao;
+  if(shouldUseFinishTargeting(u)){
+    let ap=monsterPathProgress(a),bp=monsterPathProgress(b),gap=bp-ap;
+    if(Math.abs(gap)>2.5)return gap;
+  }
+  return dist(u,a)-dist(u,b);
+}
 function secondaryDamage(u,m,dmgMult=.7){
   if(!u||!m||!m.alive)return;
   let baseAtk=unitAtkRoll(u);
@@ -2696,7 +2742,7 @@ function secondaryDamage(u,m,dmgMult=.7){
     if(u.exp>u.lvl*140){u.lvl=Math.min(10,u.lvl+1);log(def(u).name+" Lv."+u.lvl,"good");maybeGrantTierUpgrade(u)}
   }
 }
-function updateUnits(dt){let dt2=dt*G.speed;applyUnitAuras();G.placed.forEach(u=>{u.bigMomFrenzyT=Math.max(0,(u.bigMomFrenzyT||0)-dt2);u.skillSpdT=Math.max(0,(u.skillSpdT||0)-dt2);u.timer-=dt2;if(u.timer>0)return;let focus=activeFocusMon();let inRange=G.monsters.filter(m=>m.alive&&dist(u,m)<=u.range).sort((a,b)=>{if(focus){if(a===focus)return-1;if(b===focus)return 1}return dist(u,a)-dist(u,b)});u.timer=1/(u.spd*(1+(u.scopperCommand?.spdBonus||0)+(u.selfSpdPct||0)+(u.skillSpdT>0?(u.skillSpdPct||0):0)+(u.bigMomFrenzyT>0?(u.bigMomMadness?.selfSpdPct||0):0))+G.mods.spd+(u.buffSpd||0)+effectiveUnitAuraSpd(u));if(inRange.length){
+function updateUnits(dt){let dt2=dt*G.speed;applyUnitAuras();G.placed.forEach(u=>{u.bigMomFrenzyT=Math.max(0,(u.bigMomFrenzyT||0)-dt2);u.skillSpdT=Math.max(0,(u.skillSpdT||0)-dt2);u.timer-=dt2;if(u.timer>0)return;let focus=activeFocusMon();let inRange=G.monsters.filter(m=>m.alive&&dist(u,m)<=u.range).sort((a,b)=>targetCompare(u,focus,a,b));u.timer=1/(u.spd*(1+(u.scopperCommand?.spdBonus||0)+(u.selfSpdPct||0)+(u.skillSpdT>0?(u.skillSpdPct||0):0)+(u.bigMomFrenzyT>0?(u.bigMomMadness?.selfSpdPct||0):0))+G.mods.spd+(u.buffSpd||0)+effectiveUnitAuraSpd(u));if(inRange.length){
   let d=def(u),rank=tierRank(d.tier);
   if(u.multiAttack&&u.multiAttack>1){
     let hits=Math.min(u.multiAttack,inRange.length);
@@ -4001,7 +4047,7 @@ function countLimit(){return G.wave>=41?difficultyProfile().lateCount:75}
 function waveDuration(w){return isBossWave(w)?75:42}
 function start(){
   Object.assign(G,{gold:300,wave:1,kills:0,speed:1,freeRewards:0,rareRerollsLeft:2,inv:[],items:{},placed:[],monsters:[],shots:[],fx:[],floaters:[],sel:null,selMon:null,focusMon:null,drag:null,waveRun:false,spawnQ:[],spawnT:0,waveT:0,waveMax:42,uid:0,freezeT:0,mods:{dmg:0,spd:0,gold:0,story:0,dot:0},lateEvent:null,breakActive:false,breakSkipped:false,countOverT:0,countOverAnnounce:0,countWarnLevel:0,finalBossKilled:false,finalBossEscaped:false});
-  G.startTime=Date.now();G.pauseLeft=5;G.paused=false;G.startedWaves={};G.waveRewardClaimed={};G.tierUpgrades={};G.quests={fastUnique:false,fastDestroy:false,fastLegend:false};G.storyContrib={};G.storyContributionBonusClaimed={};G.storyContributionPopupSeen={};G.story=makeStoryState(currentStoryPlayerCount());G.storyDead=0;G.storyFailed=false;G.lives=countLimit();updatePauseButton();G.path=buildPath();
+  G.startTime=Date.now();G.pauseLeft=5;G.paused=false;G.startedWaves={};G.waveRewardClaimed={};G.treasureHuntClaimed={};G.tierUpgrades={};G.quests={fastUnique:false,fastDestroy:false,fastLegend:false};G.storyContrib={};G.storyContributionBonusClaimed={};G.storyContributionPopupSeen={};G.story=makeStoryState(currentStoryPlayerCount());G.storyDead=0;G.storyFailed=false;G.lives=countLimit();updatePauseButton();G.path=buildPath();
   // pathSet: 테두리 2타일 영역 전체
   let ps=new Set();
   for(let r=0;r<G.rows;r++)for(let c=0;c<G.cols;c++)if(isOuterRing(c,r))ps.add(c*100+r);
@@ -6826,7 +6872,7 @@ syncRoomState = function(force=false) {
   };
   load=function(){
     let s=JSON.parse(localStorage.getItem("ORD_WEB_SAVE")||"null");if(!s)return log("저장 데이터 없음","bad");
-    Object.assign(G,{gold:s.gold,wave:s.wave,lives:s.lives,kills:s.kills,freeRewards:s.freeRewards,rareRerollsLeft:s.rareRerollsLeft??2,quests:s.quests||{fastUnique:false,fastDestroy:false},mods:s.mods||G.mods,items:s.items||{},tierUpgrades:s.tierUpgrades||{},inv:[],placed:[],monsters:[],spawnQ:[],shots:[],fx:[],floaters:[],sel:null,selMon:null,focusMon:null,drag:null,waveRun:false,spawnT:0,countOverT:0,countOverAnnounce:0,countWarnLevel:0,breakActive:false,breakSkipped:false,lateEvent:null,finalBossKilled:false,finalBossEscaped:false,startedWaves:{},waveRewardClaimed:{},story:s.story||makeStoryState(),storyDead:s.storyDead,storyFailed:!!s.storyFailed});
+    Object.assign(G,{gold:s.gold,wave:s.wave,lives:s.lives,kills:s.kills,freeRewards:s.freeRewards,rareRerollsLeft:s.rareRerollsLeft??2,quests:s.quests||{fastUnique:false,fastDestroy:false},mods:s.mods||G.mods,items:s.items||{},tierUpgrades:s.tierUpgrades||{},inv:[],placed:[],monsters:[],spawnQ:[],shots:[],fx:[],floaters:[],sel:null,selMon:null,focusMon:null,drag:null,waveRun:false,spawnT:0,countOverT:0,countOverAnnounce:0,countWarnLevel:0,breakActive:false,breakSkipped:false,lateEvent:null,finalBossKilled:false,finalBossEscaped:false,startedWaves:{},waveRewardClaimed:{},treasureHuntClaimed:{},story:s.story||makeStoryState(),storyDead:s.storyDead,storyFailed:!!s.storyFailed});
     if($("next"))$("next").disabled=false;
     $("breakBanner")?.classList.remove("on");
     rebalanceStoryState(true);
@@ -6838,7 +6884,15 @@ syncRoomState = function(force=false) {
     });
     renderAll();log("불러오기 완료","good");
   };
-  uiLite=function(){oldUiLite();if(G.view===STORY_VIEW){$("monCount").textContent=0;$("viewLabel").textContent="스토리맵";$("lives").textContent=G.monsters.length+"/"+countLimit()}};
+  uiLite=function(){
+    oldUiLite();
+    if(G.view===STORY_VIEW){
+      let mon=$("monCount"),view=$("viewLabel"),lives=$("lives"),lifeText=G.monsters.length+"/"+countLimit();
+      if(mon&&mon.textContent!=="0")mon.textContent=0;
+      if(view&&view.textContent!=="스토리맵")view.textContent="스토리맵";
+      if(lives&&lives.textContent!==lifeText)lives.textContent=lifeText;
+    }
+  };
   ui=function(){oldUi();if(G.view===STORY_VIEW){let b=oldActiveStory();$("viewLabel").textContent="스토리맵";$("infoBody").innerHTML="<b style='color:#8ed8ff'>스토리맵</b><br>몬스터 웨이브 없음<br>스토리: "+G.storyDead+"/13"+(b?"<br>중앙 건물: "+b.name+" HP "+Math.floor(b.hp).toLocaleString()+" / AR "+defStatText(b.armorBase,b.armor)+" / MR "+defStatText(b.mresBase,b.mres):"<br>스토리 완료")+"<br>포탈: 하단 RETURN 클릭 시 메인맵 복귀<br>배치 유닛: "+placedOn(STORY_MAP).length}};
 })();
 // ===== VIDEO/W3X FEEL FINAL PATCH =====
@@ -7322,7 +7376,7 @@ function mobileHudChip(label,value,cls=""){
 }
 function updateMobileHud(){
   let h=$("mobileHud");if(!h)return;
-  if(!mobileUiActive()){h.innerHTML="";return}
+  if(!mobileUiActive()){if(h.innerHTML)h.innerHTML="";h.dataset.lastHtml="";return}
   let rs=(typeof viewedRemoteState==="function")?viewedRemoteState():null;
   let wave,mon,limit,time,boss=false,bossText="",paused=false;
   if(rs){
@@ -7340,7 +7394,10 @@ function updateMobileHud(){
     mobileHudChip("시간",paused?"일시정지":time,(String(time).startsWith("0")||String(time).includes("초")&&parseInt(time,10)<=8)?"warn":"")
   ];
   if(boss)parts.push(mobileHudChip("",bossText,"danger"));
-  h.innerHTML=parts.join("");
+  let html=parts.join("");
+  if(h.dataset.lastHtml===html)return;
+  h.dataset.lastHtml=html;
+  h.innerHTML=html;
 }
 function syncMobileInfoSheet(){
   let src=$("selected"),body=$("mobileInfoBody"),title=$("mobileInfoTitle");if(!src||!body)return;
@@ -7363,7 +7420,7 @@ function closeMobileInfoSheet(){
   if(scrim)scrim.classList.remove("open");
 }
 const __mobileHudUiLite=uiLite;
-uiLite=function(){__mobileHudUiLite();updateMobileHud()};
+uiLite=function(){__mobileHudUiLite();let now=performance.now?performance.now():Date.now();if(now-(G._mobileHudTickAt||0)>250){G._mobileHudTickAt=now;updateMobileHud()}};
 const __mobileSheetSelInfo=selInfo;
 selInfo=function(){__mobileSheetSelInfo();syncMobileInfoSheet()};
 function bindMobileInfoSheet(){
@@ -7407,14 +7464,22 @@ window.addEventListener("resize",()=>{if(!mobileUiActive())closeMobileInfoSheet(
     let d=UNIT_MAP[best.resultId];
     return {count:ready.length,label:d?d.name:"조합"};
   }
-  function updateCraftReadyBadge(){
+  function craftReadyStateKey(){
+    let items=Object.keys(G.items||{}).sort().map(id=>id+":"+(G.items[id]||0)).join(",");
+    return (G.inv?.length||0)+"|"+(G.placed?.length||0)+"|"+(G.uid||0)+"|"+items;
+  }
+  function updateCraftReadyBadge(force=false){
     let btn=$("combine");if(!btn)return;
+    let key=craftReadyStateKey();
+    if(!force&&G._craftBadgeKey===key)return;
+    G._craftBadgeKey=key;
     let s=craftReadySummary();
     btn.classList.toggle("craftReady",s.count>0);
     btn.textContent=s.count>0?("조합 가능 "+s.count+"개"):"조합";
     btn.dataset.mobileLabel=s.count>0?("조합"+s.count):"조합";
     btn.title=s.count>0?("제작 가능: "+s.label+" 외 "+Math.max(0,s.count-1)+"개"):"조합";
   }
+  window.updateCraftReadyBadge=updateCraftReadyBadge;
   function unitSortValue(u){
     let d=def(u);
     return [tierRank(d.tier),d.level||0,u.lvl||0,d.name||"",u.uid||0];
@@ -7456,6 +7521,7 @@ window.addEventListener("resize",()=>{if(!mobileUiActive())closeMobileInfoSheet(
     inv.querySelectorAll(".unitCard[data-stack]").forEach(card=>card.onclick=()=>{G.selMon=null;G.sel=G.inv.find(u=>!u.placed&&u.id===card.dataset.stack);renderLists();selInfo()});
     pl.querySelectorAll(".unitCard[data-uid]").forEach(card=>card.onclick=()=>{G.selMon=null;G.sel=G.inv.find(u=>u.uid==card.dataset.uid);renderLists();selInfo()});
     if($("panelLog"))$("panelLog").innerHTML=$("log").innerHTML;
+    if(typeof window.updateCraftReadyBadge==="function")window.updateCraftReadyBadge();
   };
   const __finalRenderRecipes=renderRecipes;
   renderRecipes=function(){
@@ -7471,7 +7537,7 @@ window.addEventListener("resize",()=>{if(!mobileUiActive())closeMobileInfoSheet(
       let hint=ok?'<div class="recipeHintLine">바로 조합 가능</div>':"";
       return '<div class="recipe '+(ok?'can readyTop ':'')+(pin?'pinned':'')+'">'+pic+'<div class="recipeName" style="color:'+tier(d).color+'">'+((r.hidden||d.tier==="hidden")?'[히든] ':'')+esc(d.name)+'</div><div class="recipeMats">'+matsHtml(r)+'</div>'+hint+'<button '+(ok?'':'disabled')+' onclick=\'craft('+safeJsArg(r.code)+')\'>'+(G.adminCraft?'운영자 생성':'조합')+'</button><button class="pinBtn '+(pin?'on':'')+'" onclick=\'pinRecipe('+safeJsArg(r.code)+')\'>'+(pin?'목표 해제':'목표 고정')+'</button></div>';
     }).join("");
-    updateCraftReadyBadge();
+    if(typeof window.updateCraftReadyBadge==="function")window.updateCraftReadyBadge(true);
   };
   function bossDeadlineHtml(b,wave=G.wave){
     if(!b||!b.boss)return "";
@@ -7489,6 +7555,8 @@ window.addEventListener("resize",()=>{if(!mobileUiActive())closeMobileInfoSheet(
   };
   function countCauseList(){
     let roles=typeof roleSetForPlaced==="function"?roleSetForPlaced():new Set(),out=[];
+    let limit=typeof countLimit==="function"?countLimit():75,remain=limit-G.monsters.length;
+    if(!G.waveRun||remain>6)return out;
     if(!roles.has("라인클"))out.push("광역/라인클 부족");
     if(!roles.has("이감")&&G.wave>=35)out.push("이감 부족");
     if(!roles.has("방깎")&&G.wave>=30)out.push("방깎 부족");
@@ -7524,10 +7592,418 @@ window.addEventListener("resize",()=>{if(!mobileUiActive())closeMobileInfoSheet(
     if(G.waveRun&&cause.length&&countLimit()-G.monsters.length<=11&&!info.innerHTML.includes("카운트 원인"))info.innerHTML+='<div style="margin-top:6px"><span class="causeBadge">카운트 원인: '+cause.map(esc).join(" / ")+'</span></div>';
   };
   const __finalUiLite=uiLite;
-  uiLite=function(){__finalUiLite();updateCraftReadyBadge()};
+  uiLite=function(){__finalUiLite()};
   const __finalCraft=craft;
-  craft=function(code){let r=__finalCraft(code);updateCraftReadyBadge();return r};
-  updateCraftReadyBadge();
+  craft=function(code){let r=__finalCraft(code);updateCraftReadyBadge(true);return r};
+  updateCraftReadyBadge(true);
+})();
+// ===== DECK DIAGNOSIS AND TARGETING TOOLS =====
+(function(){
+  const css=document.createElement("style");
+  css.textContent=`
+  #controlPanel{position:fixed;right:8px;bottom:150px;z-index:90;display:none;width:min(320px,calc(100vw - 16px));border:1px solid #315b87;background:linear-gradient(#091522,#03070c);box-shadow:0 10px 28px #000c;border-radius:9px;padding:8px;color:#abd2ff;font-size:11px}
+  #controlPanel.open{display:block}
+  .controlPanelHead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px;color:#ffd66b;font-weight:900}
+  .controlPanelHead button{border:1px solid #315b87;background:#07101a;color:#abd2ff;border-radius:5px;padding:3px 8px;font-size:10px}
+  .controlGrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+  .controlGrid .wcBtn{font-size:10px;padding:6px 3px}
+  .controlGrid .wcBtn.on,#controlBtn.on{border-color:#39ff14;color:#9eff9e;background:#071006}
+  .deckDiagBox{margin-top:7px;border:1px solid #3f5f25;background:#071005;border-radius:5px;padding:6px;color:#cfe8b0;font-size:10px;line-height:1.45}
+  .deckChip{display:inline-block;border:1px solid #4b6d2a;background:#0b1706;color:#b9f09a;border-radius:999px;padding:1px 6px;margin:2px 4px 2px 0;font-weight:900}
+  .deckChip.warn{border-color:#d88920;background:#1b1003;color:#ffd66b}
+  .deckChip.bad{border-color:#c43d2f;background:#210605;color:#ffb3a8}
+  .deckGuide{margin-top:5px;color:#d8c08a;font-size:10px;line-height:1.45}
+  .damageGuide{margin-top:5px;border-top:1px solid #27451e;padding-top:5px;color:#d8c08a}
+  .roleHelpLine{margin-top:4px;color:#d8c08a;font-size:9.5px;line-height:1.35}
+  .roleHelpLine b{color:#ffd66b}
+  .targetModeLine{margin-top:6px;border:1px solid #315b87;background:#04101b;border-radius:5px;padding:5px;color:#abd2ff;font-size:10px;line-height:1.45}
+  .targetTip{display:block;margin-top:4px;color:#c9dcff}
+  .bossSurviveWarn{margin-top:6px;border:1px solid #e0483e;background:#230604;color:#ffd0c0;border-radius:5px;padding:6px;font-size:11px;font-weight:900}
+  @media(max-width:900px){
+    #controlPanel{left:8px;right:8px;bottom:calc(132px + 8px + env(safe-area-inset-bottom));width:auto}
+    .controlGrid{gap:3px}
+    .controlGrid .wcBtn{padding:7px 2px;font-size:0}
+    .controlGrid .wcBtn[data-mobile-label]::before{font-size:10px}
+  }
+  @media(max-width:480px){
+    #controlPanel{bottom:calc(124px + 8px + env(safe-area-inset-bottom))}
+    .controlGrid .wcBtn[data-mobile-label]::before{font-size:9px}
+  }
+  `;
+  document.head.appendChild(css);
+
+  const TARGET_MODE_LABELS={auto:"자동",finish:"끝몹",boss:"보스",hp:"고HP"};
+  G.targetMode=G.targetMode||"auto";
+  const ROLE_HELP={
+    "라인클":"여러 몹을 빠르게 정리하는 광역/멀티 처리 역할입니다.",
+    "보스딜":"보스 체력을 빠르게 깎는 역할입니다. 보스 생존 경고 때 중요합니다.",
+    "방깎":"물리덱 핵심 보조입니다. 방어를 낮춰 물리 피해 효율을 올립니다.",
+    "마방깎":"마딜덱 보조입니다. 마법 피해가 더 잘 들어가게 합니다.",
+    "암브":"증폭 계열 보조입니다. 마딜/스킬 딜 효율을 올립니다.",
+    "이감":"라인을 오래 묶어 딜 시간을 벌어주는 역할입니다.",
+    "스턴":"몹 흐름을 끊어 카운트와 보스 사고를 줄입니다.",
+    "서포트":"공격력, 공속, 마나 등 전체 전투 효율을 올립니다.",
+    "단일딜":"체력 높은 몹이나 보스에 강한 집중 딜 역할입니다.",
+    "끝딜":"끝쪽으로 새는 몹이나 딸피 라인몹을 정리하는 역할입니다.",
+    "마딜":"마법 피해 중심 유닛입니다. 마방깎/암브/끝딜과 궁합이 좋습니다.",
+    "물딜":"물리 피해 중심 유닛입니다. 방깎/공증/이감과 궁합이 좋습니다."
+  };
+  function roleHelp(name){return ROLE_HELP[name]||"덱 역할 태그입니다."}
+  const ROLE_SHORT={
+    "라인클":"광역/멀티로 라인 정리",
+    "보스딜":"보스 빠르게 처리",
+    "방깎":"물딜 효율 상승",
+    "마방깎":"마딜 효율 상승",
+    "암브":"스킬/마딜 증폭",
+    "이감":"딜 시간 확보",
+    "스턴":"몹 흐름 끊기",
+    "서포트":"공격/공속/마나 보조",
+    "단일딜":"고HP/보스 집중",
+    "끝딜":"끝몹/딸피 정리",
+    "마딜":"마방깎/끝딜과 궁합",
+    "물딜":"방깎/공증과 궁합"
+  };
+  function unitFinishLike(u){
+    if(!u)return false;
+    let tr=window.TRAIT_UNITS&&window.TRAIT_UNITS[u.id],opt=tr&&tr[4]||{};
+    let specs=typeof unitSpecialties==="function"?unitSpecialties(u):[],txt=specs.join(" ");
+    return !!(opt.lineKill||u.lineKill||/끝딜|딸피|처형|마무리|라인몹 정리|라인 정리/.test(txt));
+  }
+  const __guideUnitRoleTags=unitRoleTags;
+  unitRoleTags=function(u){
+    let arr=__guideUnitRoleTags(u),seen=new Set(arr.map(t=>t[0]));
+    if(unitFinishLike(u)&&!seen.has("끝딜"))arr.push(["끝딜","core"]);
+    return arr;
+  };
+  function roleHelpCompactHtml(u){
+    let arr=unitRoleTags(u).slice(0,4).map(t=>ROLE_SHORT[t[0]]||t[0]);
+    if(!arr.length)return"";
+    return '<div class="roleHelpLine"><b>역할 도움말</b> '+arr.map(esc).join(" / ")+'</div>';
+  }
+  const __guideRoleTagsHtml=roleTagsHtml;
+  roleTagsHtml=function(u,limit=5){
+    let arr=unitRoleTags(u).slice(0,limit);
+    if(!arr.length)return"";
+    return'<div class="roleTags">'+arr.map(t=>'<span class="roleTag '+(t[1]||"")+'" title="'+esc(roleHelp(t[0]))+'">'+esc(t[0])+'</span>').join("")+'</div>';
+  };
+  const __guideSelInfo=selInfo;
+  selInfo=function(){
+    __guideSelInfo();
+    if(!G.sel||G.selMon)return;
+    let el=$("selected");if(!el||el.innerHTML.includes("역할 도움말"))return;
+    el.innerHTML+=roleHelpCompactHtml(G.sel);
+    if(typeof syncMobileInfoSheet==="function")syncMobileInfoSheet();
+  };
+
+  function ensureTargetControls(){
+    let actions=$("actions");if(!actions)return;
+    let last=actions.lastElementChild;
+    if(last&&!$("controlBtn")){
+      let btn=document.createElement("button");
+      btn.className="wcBtn";
+      btn.id="controlBtn";
+      btn.type="button";
+      btn.dataset.mobileLabel="컨트롤";
+      btn.textContent="컨트롤";
+      btn.onclick=()=>window.toggleControlPanel();
+      last.insertBefore(btn,last.firstChild);
+    }
+    if(!$("controlPanel")){
+      let panel=document.createElement("div");
+      panel.id="controlPanel";
+      panel.innerHTML='<div class="controlPanelHead"><span>타겟 컨트롤</span><button onclick="closeControlPanel()">닫기</button></div><div class="controlGrid"><button class="wcBtn" id="quickFocusBtn" data-mobile-label="점사" onclick="quickFocusTarget()">일점사</button><button class="wcBtn" data-target-mode="auto" data-mobile-label="자동" onclick="setTargetMode(\'auto\')">자동</button><button class="wcBtn" data-target-mode="finish" data-mobile-label="끝" onclick="setTargetMode(\'finish\')">끝몹</button><button class="wcBtn" data-target-mode="boss" data-mobile-label="보스" onclick="setTargetMode(\'boss\')">보스</button><button class="wcBtn" data-target-mode="hp" data-mobile-label="HP" onclick="setTargetMode(\'hp\')">고HP</button></div><div class="targetTip">끝몹은 새는 몹, 보스는 보스 우선, 고HP는 체력 높은 몹을 먼저 봅니다.</div>';
+      document.body.appendChild(panel);
+    }
+  }
+  function syncTargetControls(){
+    ensureTargetControls();
+    document.querySelectorAll("[data-target-mode]").forEach(b=>b.classList.toggle("on",b.dataset.targetMode===(G.targetMode||"auto")));
+    let q=$("quickFocusBtn");if(q)q.textContent=G.focusMon&&G.focusMon.alive!==false?"일점사 해제":"일점사";
+    let c=$("controlBtn");if(c)c.classList.toggle("on",(G.targetMode||"auto")!=="auto"||!!(G.focusMon&&G.focusMon.alive!==false));
+  }
+  window.toggleControlPanel=function(){ensureTargetControls();let p=$("controlPanel");if(p){p.classList.toggle("open");syncTargetControls()}};
+  window.closeControlPanel=function(){let p=$("controlPanel");if(p)p.classList.remove("open")};
+  window.setTargetMode=function(mode){
+    G.targetMode=TARGET_MODE_LABELS[mode]?mode:"auto";
+    log("타겟 우선: "+TARGET_MODE_LABELS[G.targetMode],"sys");
+    announce("타겟 우선: "+TARGET_MODE_LABELS[G.targetMode],1600,"#abd2ff");
+    syncTargetControls();ui();
+  };
+  function focusSortValue(m,mode){
+    if((m.outGrace||0)>0)return 100000-(m.outGrace||0);
+    if(mode==="boss")return(m.boss?90000:0)+monsterPathProgress(m);
+    if(mode==="hp")return((m.hp||0)/Math.max(1,m.max||m.hp||1))*1000+(m.hp||0)/1000000;
+    return monsterPathProgress(m);
+  }
+  window.quickFocusTarget=function(){
+    if(G.focusMon&&G.focusMon.alive!==false){G.focusMon=null;G.selMon=null;announce("일점사 해제",1400,"#abd2ff");log("일점사 해제","sys");syncTargetControls();selInfo();return}
+    let mode=G.targetMode||"auto",list=G.monsters.filter(m=>m&&m.alive!==false);
+    if(!list.length){announce("일점사 대상 없음",1400,"#ffb86b");return}
+    list.sort((a,b)=>focusSortValue(b,mode)-focusSortValue(a,mode));
+    G.focusMon=list[0];G.selMon=list[0];G.selMonView=1;
+    announce("일점사: "+(G.focusMon.name||TARGET_MODE_LABELS[mode]+" 대상"),1700,"#39ff14");
+    log("일점사 지정: "+(G.focusMon.name||"몬스터")+" / "+TARGET_MODE_LABELS[mode],"sys");
+    syncTargetControls();selInfo();
+  };
+
+  const __deckTargetCompare=targetCompare;
+  function unitAutoTargetKind(u){
+    let roles=unitRoleTags(u).map(t=>t[0]);
+    if(roles.includes("끝딜"))return"finish";
+    if(roles.includes("단일딜")||roles.includes("보스딜"))return"hp";
+    return"";
+  }
+  targetCompare=function(u,focus,a,b){
+    if(focus){if(a===focus)return-1;if(b===focus)return 1}
+    let ao=a.outGrace||0,bo=b.outGrace||0;
+    if(ao>0||bo>0)return ao>0&&bo>0?ao-bo:bo-ao;
+    let mode=G.targetMode||"auto";
+    if(mode==="auto")return __deckTargetCompare(u,null,a,b);
+    if(mode==="boss"&&(a.boss||b.boss))return(b.boss?1:0)-(a.boss?1:0)||__deckTargetCompare(u,null,a,b);
+    if(mode==="hp"){
+      let ap=(a.hp||0)/Math.max(1,a.max||a.hp||1),bp=(b.hp||0)/Math.max(1,b.max||b.hp||1);
+      if(Math.abs(bp-ap)>.04)return bp-ap;
+      return(b.hp||0)-(a.hp||0)||__deckTargetCompare(u,null,a,b);
+    }
+    if(mode==="finish"){
+      let gap=monsterPathProgress(b)-monsterPathProgress(a);
+      if(Math.abs(gap)>.15)return gap;
+      return __deckTargetCompare(u,null,a,b);
+    }
+    return __deckTargetCompare(u,null,a,b);
+  };
+
+  function hasPlacedRole(name){return typeof roleSetForPlaced==="function"&&roleSetForPlaced().has(name)}
+  function deckDiagnosisItems(){
+    let out=[],set=typeof roleSetForPlaced==="function"?roleSetForPlaced():new Set(),placed=G.placed||[],high=placed.some(u=>tierRank(def(u).tier)>=tierRank("legend"));
+    let magic=placed.filter(u=>u.dmgType==="magic").length,phys=placed.filter(u=>u.dmgType!=="magic").length;
+    let limit=typeof countLimit==="function"?countLimit():75,count=G.monsters.length,remain=limit-count,timeRatio=G.waveRun&&G.waveMax?((G.waveT||0)/G.waveMax):1;
+    let pressure=G.waveRun&&(remain<=12||count>=Math.max(14,limit*.72)||timeRatio<.28&&count>=8);
+    let danger=G.waveRun&&(remain<=6||count>=Math.max(22,limit*.86));
+    let bossAlive=G.monsters.some(m=>m&&m.boss&&m.alive!==false);
+    let bossUrgent=G.monsters.some(m=>m&&m.boss&&m.alive!==false&&((m.bossRound||G.wave)+3-G.wave)<=2);
+    if(!pressure&&!bossUrgent){out.push([G.waveRun?"라인 안정":"대기 중","ok"]);if(high)out.push(["고등급 확보","ok"]);return out.slice(0,3)}
+    if(danger&&G.wave>=18&&!set.has("라인클"))out.push(["라인클 부족","bad"]);
+    if((bossUrgent||isBossWave(G.wave))&&!set.has("보스딜"))out.push(["보스딜 부족","bad"]);
+    if(pressure&&G.wave>=35&&!set.has("이감"))out.push(["이감 낮음","warn"]);
+    if(danger&&G.wave>=35&&!set.has("스턴"))out.push(["스턴 부족","warn"]);
+    if(pressure&&G.wave>=32&&phys>=magic&&!set.has("방깎"))out.push(["방깎 부족","warn"]);
+    if(pressure&&G.wave>=45&&magic>phys&&!set.has("마방깎")&&!set.has("암브"))out.push(["마딜 보조 부족","warn"]);
+    if(danger&&G.wave>=45&&!set.has("단일딜")&&!set.has("보스딜"))out.push(["끝딜/단일 부족","bad"]);
+    if(!high&&pressure&&G.wave>=30)out.push(["고등급 딜러 부족","warn"]);
+    if(bossAlive&&!bossUrgent&&!out.length)out.push(["보스 관찰 중","ok"]);
+    if(!out.length)out.push(["균형 양호","ok"]);
+    return out.slice(0,5);
+  }
+  function deckDiagnosisHtml(){
+    let items=deckDiagnosisItems();
+    return '<div class="deckDiagBox"><b>덱 진단</b><br>'+items.map(x=>'<span class="deckChip '+(x[1]==="ok"?"":x[1])+'">'+esc(x[0])+'</span>').join("")+damageDirectionHtml()+'</div>';
+  }
+  function damageDirection(){
+    let placed=G.placed||[],magic=0,phys=0,magicPower=0,physPower=0;
+    placed.forEach(u=>{let r=Math.max(1,tierRank(def(u).tier)),v=r*(u.lvl||1);if(u.dmgType==="magic"){magic++;magicPower+=v}else{phys++;physPower+=v}});
+    if(!placed.length)return {type:"none",label:"방향 미정",tip:"유닛을 배치하면 물딜/마딜 성향을 판정합니다."};
+    if(magicPower>physPower*1.18)return {type:"magic",label:"마딜 성향",tip:"마딜은 이감/스턴으로 시간을 벌고, 마방깎/암브/끝딜로 후반 카운트를 관리합니다."};
+    if(physPower>magicPower*1.18)return {type:"phys",label:"물딜 성향",tip:"물딜은 방깎 효율이 큽니다. 방깎과 이감이 갖춰지면 라인 안정성이 좋아집니다."};
+    return {type:"mixed",label:"혼합 성향",tip:"혼합덱은 부족한 쪽 유틸을 최소로 보완하고, 강한 주력 딜러를 밀어주는 편이 안정적입니다."};
+  }
+  function damageDirectionHtml(){
+    let d=damageDirection();
+    return '<div class="damageGuide"><span class="deckChip">'+esc(d.label)+'</span><br>'+esc(d.tip)+'</div>';
+  }
+  function targetTipText(){
+    let mode=G.targetMode||"auto";
+    if(mode==="hp")return"단일은 체력이 높은 몹에 먼저 묻힐수록 효율이 좋습니다.";
+    if(mode==="finish")return"끝몹 우선은 새는 몹과 딸피 정리에 유리합니다.";
+    if(mode==="boss")return"보스 우선은 생존 기한이 가까울 때 켜면 좋습니다.";
+    return"단일은 고HP, 끝딜은 끝몹/딸피 정리에 유리합니다.";
+  }
+  function targetModeHtml(){
+    let label=TARGET_MODE_LABELS[G.targetMode||"auto"]||"자동",focus=G.focusMon&&G.focusMon.alive!==false?(" / 일점사 "+esc(G.focusMon.name||"몬스터")):"";
+    return '<div class="targetModeLine"><b>타겟</b> '+label+focus+'<span class="targetTip">'+esc(targetTipText())+'</span></div>';
+  }
+  const recipeRoleCache={};
+  function recipeRoles(r){
+    let id=r&&r.resultId;if(!id)return[];
+    if(recipeRoleCache[id])return recipeRoleCache[id];
+    let oldUid=G.uid,u=null;
+    try{u=mk(id)}catch(e){}
+    G.uid=oldUid;
+    return recipeRoleCache[id]=u?unitRoleTags(u).map(t=>t[0]):[];
+  }
+  function missingUtilityScore(r){
+    let d=UNIT_MAP[r.resultId];if(!d||tierRank(d.tier)<tierRank("rare"))return 0;
+    let roles=recipeRoles(r),set=typeof roleSetForPlaced==="function"?roleSetForPlaced():new Set(),dir=damageDirection().type,score=0;
+    if(!set.has("라인클")&&roles.includes("라인클"))score+=8;
+    if((dir==="phys"||dir==="mixed")&&!set.has("방깎")&&roles.includes("방깎"))score+=10;
+    if((dir==="magic"||dir==="mixed")&&!set.has("마방깎")&&roles.includes("마방깎"))score+=10;
+    if((dir==="magic"||dir==="mixed")&&!set.has("암브")&&roles.includes("암브"))score+=7;
+    if(G.wave>=25&&!set.has("보스딜")&&roles.includes("보스딜"))score+=7;
+    if(G.wave>=30&&!set.has("이감")&&roles.includes("이감"))score+=6;
+    if(G.wave>=35&&!set.has("스턴")&&roles.includes("스턴"))score+=4;
+    if(G.wave>=40&&!set.has("끝딜")&&!set.has("단일딜")&&(roles.includes("끝딜")||roles.includes("단일딜")))score+=5;
+    return score;
+  }
+  function utilityHintHtml(r){
+    let score=missingUtilityScore(r);if(score<=0)return"";
+    let roles=recipeRoles(r).filter(x=>["라인클","보스딜","방깎","마방깎","암브","이감","스턴","끝딜","단일딜"].includes(x)).slice(0,3);
+    return '<div class="recipeHintLine">부족 유틸 추천'+(roles.length?": "+roles.map(esc).join(" / "):"")+'</div>';
+  }
+  const __utilityRenderRecipes=renderRecipes;
+  renderRecipes=function(){
+    syncAdminCraftUi();
+    let q=($("recipeSearch")?.value||"").toLowerCase(),grid=$("recipeGrid");if(!grid)return __utilityRenderRecipes();
+    let rows=RECIPES.filter(r=>{let d=UNIT_MAP[r.resultId],txt=(d.name+" "+r.code+" "+mats(r)).toLowerCase();return recipeTierMatch(d.tier,G.recipeTier)&&(!q||txt.includes(q))});
+    rows.sort((a,b)=>{
+      let ca=canCraft(a)?1:0,cb=canCraft(b)?1:0,ua=missingUtilityScore(a),ub=missingUtilityScore(b),da=UNIT_MAP[a.resultId],db=UNIT_MAP[b.resultId];
+      return (cb-ca)||(ub-ua)||(tierRank(db.tier)-tierRank(da.tier))||((db.level||0)-(da.level||0))||(da.name||"").localeCompare(db.name||"");
+    });
+    grid.innerHTML=rows.map(r=>{
+      let d=UNIT_MAP[r.resultId],ok=canCraft(r),img=IMG[d.id],pic=img&&img!==false?'<img src="'+img.src+'">':'<img>',pin=G.pinnedRecipe===r.code;
+      let hint=(ok?'<div class="recipeHintLine">바로 조합 가능</div>':'')+utilityHintHtml(r);
+      return '<div class="recipe '+(ok?'can readyTop ':'')+(pin?'pinned':'')+'">'+pic+'<div class="recipeName" style="color:'+tier(d).color+'">'+((r.hidden||d.tier==="hidden")?'[히든] ':'')+esc(d.name)+'</div><div class="recipeMats">'+matsHtml(r)+'</div>'+hint+'<button '+(ok?'':'disabled')+' onclick=\'craft('+safeJsArg(r.code)+')\'>'+(G.adminCraft?'운영자 생성':'조합')+'</button><button class="pinBtn '+(pin?'on':'')+'" onclick=\'pinRecipe('+safeJsArg(r.code)+')\'>'+(pin?'목표 해제':'목표 고정')+'</button></div>';
+    }).join("");
+    if(typeof window.updateCraftReadyBadge==="function")window.updateCraftReadyBadge();
+  };
+  function bossRemainText(remain){return remain<=0?"이번 라운드 안에":"다음 "+remain+"라운드 안에"}
+  function bossSurvivalHtml(){
+    let b=G.monsters.find(m=>m&&m.boss&&m.alive!==false);if(!b)return"";
+    let deadline=(+(b.bossRound||G.wave))+3,remain=Math.max(0,deadline-G.wave);
+    if(remain>2)return"";
+    return '<div class="bossSurviveWarn">보스 생존 중: '+bossRemainText(remain)+' 처치 필요</div>';
+  }
+  function maybeAnnounceBossSurvival(){
+    let b=G.monsters.find(m=>m&&m.boss&&m.alive!==false);if(!b)return;
+    let deadline=(+(b.bossRound||G.wave))+3,remain=Math.max(0,deadline-G.wave);
+    if(remain>2)return;
+    G.bossSurvivalWarned=G.bossSurvivalWarned||{};
+    let key=(b.bossRound||G.wave)+":"+remain;
+    if(G.bossSurvivalWarned[key])return;
+    G.bossSurvivalWarned[key]=true;
+    announce("보스 생존 중: "+bossRemainText(remain)+" 처치 필요",3600,"#ff5757");
+    log("보스 생존 경고: "+bossRemainText(remain)+" 처치 필요","warn");
+  }
+
+  const __deckUi=ui;
+  ui=function(){
+    __deckUi();
+    syncTargetControls();
+    let info=$("infoBody");if(!info||typeof viewedRemoteState==="function"&&viewedRemoteState())return;
+    if(!info.innerHTML.includes("덱 진단"))info.innerHTML+=deckDiagnosisHtml();
+    if(!info.innerHTML.includes("타겟</b>"))info.innerHTML+=targetModeHtml();
+    let bossHtml=bossSurvivalHtml();
+    if(bossHtml&&!info.innerHTML.includes("보스 생존 중"))info.innerHTML+=bossHtml;
+    maybeAnnounceBossSurvival();
+  };
+  const __deckStart=start;
+  start=function(){G.targetMode=G.targetMode||"auto";G.bossSurvivalWarned={};return __deckStart()};
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",syncTargetControls);else syncTargetControls();
+})();
+// ===== IN-GAME QUICK SETTINGS =====
+(function(){
+  const css=document.createElement("style");
+  css.textContent=`
+  .runtimeSettingsBtn{border:1px solid var(--line2);background:#160f07;color:var(--gold);padding:3px 8px;border-radius:3px;cursor:pointer;font-size:11px}
+  .runtimeSettingsBtn.on{border-color:#39ff14;color:#9eff9e;background:#071006}
+  #runtimeSettingsPanel{position:fixed;right:8px;top:44px;z-index:80;display:none;width:min(250px,calc(100vw - 16px));border:1px solid var(--line2);background:linear-gradient(#1a1107,#080602);box-shadow:0 8px 26px #000b;border-radius:8px;padding:9px;color:var(--text);font-size:11px}
+  #runtimeSettingsPanel.open{display:block}
+  .runtimeSettingsTitle{display:flex;align-items:center;justify-content:space-between;color:var(--gold);font-weight:900;margin-bottom:7px}
+  .runtimeSettingsTitle button{border:1px solid var(--line);background:#110b04;color:var(--muted);border-radius:4px;padding:2px 7px;font-size:10px}
+  .runtimeSettingLine{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:7px;color:#ead9ad}
+  .runtimeSettingLine input[type=checkbox]{width:16px;height:16px;accent-color:#f0c040}
+  .runtimeSettingLine input[type=range]{flex:1;accent-color:#f0c040;min-width:80px}
+  .runtimeSettingValue{min-width:38px;text-align:right;color:var(--gold);font-family:Consolas,monospace}
+  @media(max-width:900px){
+    .runtimeSettingsBtn{padding:5px 9px;font-size:12px}
+    #runtimeSettingsPanel{top:42px;right:6px;font-size:11px}
+  }
+  `;
+  document.head.appendChild(css);
+
+  function runtimeMuted(){return masterVolume()<=0.001}
+  function syncRuntimeSettingsUI(){
+    let mute=$("runtimeMuteToggle"),fx=$("runtimeFxToggle"),vol=$("runtimeVolumeSlider"),val=$("runtimeVolumeValue"),btn=$("runtimeSettingsBtn");
+    let shownVol=runtimeMuted()?(G.prevRuntimeVolume||defaultEnvSettings().audioVolume):masterVolume();
+    if(mute)mute.checked=runtimeMuted();
+    if(fx)fx.checked=!!G.minFx;
+    if(vol)vol.value=Math.round(shownVol*100);
+    if(val)val.textContent=Math.round(shownVol*100)+"%";
+    if(btn)btn.classList.toggle("on",!!G.minFx||runtimeMuted());
+  }
+  window.applyRuntimeSettings=function(save){
+    let mute=$("runtimeMuteToggle"),fx=$("runtimeFxToggle"),vol=$("runtimeVolumeSlider");
+    let nextVol=vol?clamp01(Number(vol.value)/100):masterVolume();
+    if(fx)G.minFx=!!fx.checked;
+    if(vol&&!mute?.checked)G.audioVolume=nextVol;
+    if(mute&&mute.checked){G.prevRuntimeVolume=nextVol||G.prevRuntimeVolume||defaultEnvSettings().audioVolume;G.audioVolume=0}
+    else if(mute&&!mute.checked&&masterVolume()<=0.001){G.audioVolume=clamp01(G.prevRuntimeVolume||defaultEnvSettings().audioVolume)}
+    document.documentElement.classList.toggle("min-fx",!!G.minFx);
+    if(G.minFx){G.fx=[];G.shots=[];G.shakeT=0;G.shakePower=0;let cut=$("skillCutin");if(cut)cut.classList.remove("on");if(typeof stopCombatSounds==="function")stopCombatSounds();if(typeof stopBGM==="function")stopBGM()}
+    if(runtimeMuted()&&typeof stopCombatSounds==="function")stopCombatSounds();
+    if(save)localStorage.setItem(ENV_SETTINGS_KEY,JSON.stringify({minFx:!!G.minFx,audioVolume:masterVolume()}));
+    if(typeof refreshAudioVolumes==="function")refreshAudioVolumes();
+    syncEnvSettingsUI();
+    syncRuntimeSettingsUI();
+  };
+  window.toggleRuntimeSettings=function(){
+    ensureRuntimeSettingsUI();
+    let p=$("runtimeSettingsPanel");
+    if(!p)return;
+    p.classList.toggle("open");
+    syncRuntimeSettingsUI();
+  };
+  window.closeRuntimeSettings=function(){let p=$("runtimeSettingsPanel");if(p)p.classList.remove("open")};
+  function ensureRuntimeSettingsUI(){
+    let speed=document.querySelector(".speed");
+    if(speed&&!$("runtimeSettingsBtn")){
+      let btn=document.createElement("button");
+      btn.id="runtimeSettingsBtn";
+      btn.className="runtimeSettingsBtn";
+      btn.type="button";
+      btn.textContent="⚙";
+      btn.title="게임 설정";
+      btn.onclick=toggleRuntimeSettings;
+      speed.insertBefore(btn,speed.firstChild);
+    }
+    if(!$("runtimeSettingsPanel")){
+      let panel=document.createElement("div");
+      panel.id="runtimeSettingsPanel";
+      panel.innerHTML='<div class="runtimeSettingsTitle"><span>게임 설정</span><button onclick="closeRuntimeSettings()">닫기</button></div><label class="runtimeSettingLine" for="runtimeMuteToggle"><span>음소거</span><input id="runtimeMuteToggle" type="checkbox" onchange="applyRuntimeSettings(true)"></label><label class="runtimeSettingLine" for="runtimeFxToggle"><span>이펙트 OFF</span><input id="runtimeFxToggle" type="checkbox" onchange="applyRuntimeSettings(true)"></label><label class="runtimeSettingLine" for="runtimeVolumeSlider"><span>음량</span><input id="runtimeVolumeSlider" type="range" min="0" max="100" value="70" oninput="applyRuntimeSettings(true)"><span class="runtimeSettingValue" id="runtimeVolumeValue">70%</span></label>';
+      document.body.appendChild(panel);
+    }
+    syncRuntimeSettingsUI();
+  }
+  const __runtimeStart=start;
+  start=function(){let r=__runtimeStart.apply(this,arguments);ensureRuntimeSettingsUI();return r};
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",ensureRuntimeSettingsUI);else ensureRuntimeSettingsUI();
+  document.addEventListener("click",e=>{
+    let p=$("runtimeSettingsPanel"),b=$("runtimeSettingsBtn");
+    if(!p||!p.classList.contains("open"))return;
+    if(p.contains(e.target)||b&&b.contains(e.target))return;
+    p.classList.remove("open");
+  });
+})();
+// ===== ANCIENT SHIP SELL BUTTON =====
+(function(){
+  const ANCIENT_SHIP_ITEM_ID="item_ancientship";
+  const ANCIENT_SHIP_SELL_GOLD=10000;
+  window.sellAncientShip=function(){
+    let n=(G.items&&G.items[ANCIENT_SHIP_ITEM_ID])||0;
+    if(n<=0)return log("판매할 고대의 배가 없습니다","bad");
+    G.items[ANCIENT_SHIP_ITEM_ID]=n-1;
+    if(G.items[ANCIENT_SHIP_ITEM_ID]<=0)delete G.items[ANCIENT_SHIP_ITEM_ID];
+    G.gold+=ANCIENT_SHIP_SELL_GOLD;
+    log("고대의 배 판매 +"+ANCIENT_SHIP_SELL_GOLD.toLocaleString()+"G","good");
+    if(typeof announce==="function")announce("고대의 배 판매 +"+ANCIENT_SHIP_SELL_GOLD.toLocaleString()+"G",2200,"#ffd66b");
+    renderAll();
+  };
+  const __ancientShipRenderItemCard=renderItemCard;
+  renderItemCard=function(id,n){
+    let html=__ancientShipRenderItemCard(id,n);
+    if(id!==ANCIENT_SHIP_ITEM_ID||!n)return html;
+    let btn='<button style="margin-top:4px;padding:3px 7px;border:1px solid #d4a017;background:#1b1005;color:#ffd66b;border-radius:3px;font-size:10px;font-weight:900" onclick="event.stopPropagation();sellAncientShip()">판매 10,000G</button>';
+    return html.replace('</div></div>',btn+'</div></div>');
+  };
 })();
 </script>
 </body>
