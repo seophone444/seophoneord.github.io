@@ -116,15 +116,6 @@ html.ios-lite #skillCutin img{opacity:.32;filter:none;transform:scale(1);animati
 .pinBtn{margin-top:5px;border:1px solid #8b6420;background:#1d1305;color:#f0c040;border-radius:3px;padding:3px 8px;font-size:9px;cursor:pointer}
 .pinBtn.on{border-color:#39ff14;color:#9eff9e;background:#071006}
 .eventBox{margin-top:7px;border:1px solid #375b92;background:#04101b;border-radius:5px;padding:6px;color:#abd2ff;font-size:10px;line-height:1.45}
-#unitQuickBar{position:relative;z-index:20;display:none;flex:0 0 auto;align-items:center;gap:5px;flex-wrap:wrap;border-top:1px solid var(--line);padding:6px 7px;background:linear-gradient(90deg,#140d04,#070501);font-size:10px;color:var(--muted)}
-#unitQuickBar.on{display:flex!important}
-.unitQuickTitle{min-width:0;max-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:900;color:var(--gold)}
-.unitQuickChip{border:1px solid #4b3210;background:#100904;color:#d8c08a;border-radius:999px;padding:2px 7px;font-size:9px;white-space:nowrap}
-.unitQuickChip.done{border-color:#2f9d46;color:#8fffb0;background:#061105}
-.unitQuickBtn{border:1px solid #d4a017;background:#1b1206;color:#ffd66b;border-radius:5px;padding:4px 9px;font-size:10px;font-weight:900;cursor:pointer;white-space:nowrap}
-.unitQuickBtn.recipe{border-color:#45a94d;color:#9af0a0;background:#071006}
-.unitQuickBtn.recipe.ready{box-shadow:0 0 0 1px #3cff5644;background:#0a1808}
-.unitQuickBtn:disabled{opacity:.45;cursor:not-allowed}
 #selected{flex:0 0 auto;border-top:1px solid var(--line);padding:7px;font-size:10px;color:var(--muted);max-height:245px;overflow-y:auto}
 .hintTitle{margin-top:6px;padding-top:5px;border-top:1px solid #2b1b08;color:#d8c08a;font-weight:700}
 .hintRow{margin-top:4px;padding:5px;border:1px solid #2c1c08;background:#080602;border-radius:4px}
@@ -233,7 +224,7 @@ html.min-fx #skillCutin{display:none!important}
   .stat b{font-size:12px;min-width:28px}
   .speed{margin-left:auto;flex:0 0 auto;width:auto;max-width:100%;justify-content:flex-start;flex-wrap:wrap}
   .speed button,.tiny-btn{padding:5px 10px;font-size:12px}
-  #main{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr;grid-template-rows:minmax(230px,1fr) 112px;width:100vw;max-width:100vw;overflow:hidden}
+  #main{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr;grid-template-rows:minmax(230px,1fr) 168px;width:100vw;max-width:100vw;overflow:hidden}
   #mapWrap{min-height:0!important;max-height:none;width:100%;overflow:hidden}
   #mobileHud{position:absolute;left:8px;right:8px;top:8px;z-index:9;display:flex;gap:5px;flex-wrap:wrap;pointer-events:none}
   .hudChip{border:1px solid #5e4215;background:#090501c8;color:#f3dfaa;border-radius:999px;padding:3px 7px;font:900 10px/1.25 Consolas,"Malgun Gothic",sans-serif;box-shadow:0 2px 10px #0008}
@@ -245,15 +236,10 @@ html.min-fx #skillCutin{display:none!important}
   .tabs{height:28px;flex:0 0 28px}
   .tab{font-size:10px}
   .scroll{padding:4px;min-height:0;overflow-x:auto;overflow-y:hidden;white-space:nowrap;-webkit-overflow-scrolling:touch}
-  #panelInv,#panelPlaced,#panelLog{min-height:0;height:53px}
-  #unitQuickBar{position:fixed;left:0;right:0;bottom:calc(132px + 29px + env(safe-area-inset-bottom));z-index:45;min-height:34px;max-height:34px;padding:4px 5px;gap:4px;flex-wrap:nowrap;overflow-x:auto;overflow-y:visible;-webkit-overflow-scrolling:touch;border-top:1px solid #d4a017;border-bottom:1px solid #3d2a0d;box-shadow:0 -4px 12px #0008,0 4px 12px #0008}
-  .unitQuickTitle{max-width:86px;font-size:9px}
-  .unitQuickChip{font-size:8px;padding:1px 5px}
-  .unitQuickBtn{font-size:9px;padding:5px 7px;line-height:1}
-  .unitQuickBtn.info{border-color:#8b6420;color:#ffd66b;background:#1b1005}
-  #selected{max-height:29px;min-height:29px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:8.5px;line-height:1.2;padding:4px 54px 4px 6px;position:relative;cursor:pointer}
-  #selected::after{content:"정보";position:absolute;right:6px;top:50%;transform:translateY(-50%);border:1px solid #8b6420;border-radius:999px;padding:2px 7px;background:#1b1005;color:#ffd66b;font-size:9px}
-  #selected button{font-size:9px!important;padding:2px 5px!important;margin-top:2px!important}
+  #panelInv,#panelPlaced,#panelLog{min-height:0;height:45px}
+  #selected{max-height:95px;min-height:95px;overflow-y:auto;overflow-x:hidden;white-space:normal;text-overflow:clip;font-size:9px;line-height:1.28;padding:6px 52px 6px 7px;position:relative;cursor:pointer;background:linear-gradient(#100903,#050302);box-shadow:inset 0 1px 0 #d4a01733}
+  #selected::after{content:"정보";position:absolute;right:6px;top:6px;transform:none;border:1px solid #8b6420;border-radius:999px;padding:2px 7px;background:#1b1005;color:#ffd66b;font-size:9px}
+  #selected button{font-size:9px!important;padding:2px 6px!important;margin-top:2px!important}
   .hintTitle{margin-top:3px;padding-top:3px}
   .hintRow{padding:4px;margin-top:3px}
   .hintMats{font-size:8px}
@@ -309,11 +295,9 @@ html.min-fx #skillCutin{display:none!important}
   .stat b{font-size:11px}
   #top .stat:has(#kills),#top .stat:has(#unitCount){display:none}
   .speed button,.tiny-btn{padding:4px 8px;font-size:11px}
-  #main{grid-template-rows:minmax(210px,1fr) 104px}
-  #panelInv,#panelPlaced,#panelLog{height:50px}
-  #unitQuickBar{bottom:calc(124px + 26px + env(safe-area-inset-bottom));min-height:33px;max-height:33px}
-  .unitQuickTitle{max-width:72px}
-  #selected{max-height:26px;min-height:26px;font-size:8px}
+  #main{grid-template-rows:minmax(210px,1fr) 158px}
+  #panelInv,#panelPlaced,#panelLog{height:44px}
+  #selected{max-height:86px;min-height:86px;font-size:8.5px;line-height:1.25;padding:5px 50px 5px 6px}
   .unitCard{width:108px;min-height:42px}
   #bottom{height:124px;flex-basis:calc(124px + env(safe-area-inset-bottom));grid-template-columns:108px minmax(0,1fr)}
   #miniPanel{width:108px}
@@ -355,7 +339,6 @@ html.min-fx #skillCutin{display:none!important}
       <div id="panelInv" class="scroll"></div>
       <div id="panelPlaced" class="scroll" style="display:none"></div>
       <div id="panelLog" class="scroll" style="display:none"></div>
-      <div id="unitQuickBar"></div>
       <div id="selected">유닛을 선택하세요</div>
     </aside>
   </div>
@@ -7512,12 +7495,11 @@ window.addEventListener("resize",()=>{if(!mobileUiActive())closeMobileInfoSheet(
   }
   function renderSortedStackCard(g){
     let d=def(g.unit),img=IMG[d.id],pic=img&&img!==false?'<img src="'+img.src+'">':'<img alt="">',sel=G.sel&&!G.sel.placed&&G.sel.id===g.unit.id,rerollUid=g.rerollUid;
-    let trait=g.traitCount?'<span class="traitBadge">특성 '+g.traitCount+'</span>':"";
-    return '<div class="unitCard stack '+(sel?'sel':'')+'" data-stack="'+g.unit.id+'">'+pic+'<div><div class="uName" style="color:'+tier(d).color+'">'+esc(d.name)+'</div><div class="uSub">'+tier(d).name+' / 대기 '+g.count+'기</div>'+trait+roleTagsHtml(g.unit,3)+(rerollUid?rareRerollButtonHtml(rerollUid):'')+stackBatchButtonHtml(g.unit.id,g.count)+'</div><span class="countBadge">x'+g.count+'</span></div>';
+    return '<div class="unitCard stack '+(sel?'sel':'')+'" data-stack="'+g.unit.id+'">'+pic+'<div><div class="uName" style="color:'+tier(d).color+'">'+esc(d.name)+'</div><div class="uSub">'+tier(d).name+'</div>'+(rerollUid?rareRerollButtonHtml(rerollUid):'')+stackBatchButtonHtml(g.unit.id,g.count)+'</div><span class="countBadge">x'+g.count+'</span></div>';
   }
   function renderSortedCard(u){
     let d=def(u),img=IMG[d.id],pic=img&&img!==false?'<img src="'+img.src+'">':'<img alt="">';
-    return '<div class="unitCard '+(u===G.sel?'sel':'')+'" data-uid="'+u.uid+'">'+pic+'<div><div class="uName" style="color:'+tier(d).color+'">'+esc(d.name)+'</div><div class="uSub">'+tier(d).name+' Lv.'+u.lvl+' ATK '+unitAtkText(u)+'</div>'+traitBadgeHtml(u)+roleTagsHtml(u,3)+rareRerollButtonHtml(u.uid)+'</div></div>';
+    return '<div class="unitCard '+(u===G.sel?'sel':'')+'" data-uid="'+u.uid+'">'+pic+'<div><div class="uName" style="color:'+tier(d).color+'">'+esc(d.name)+'</div><div class="uSub">'+tier(d).name+'</div>'+rareRerollButtonHtml(u.uid)+'</div></div>';
   }
   const __finalRenderLists=renderLists;
   renderLists=function(){
@@ -7911,114 +7893,6 @@ window.addEventListener("resize",()=>{if(!mobileUiActive())closeMobileInfoSheet(
   const __deckStart=start;
   start=function(){G.targetMode=G.targetMode||"auto";G.bossSurvivalWarned={};return __deckStart()};
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",syncTargetControls);else syncTargetControls();
-})();
-// ===== SELECTED UNIT QUICK ACTION BAR =====
-(function(){
-  const TRAIT_ITEM_ID="item_trait";
-  function selectedUnit(){
-    return G&&G.sel&&!G.selMon?G.sel:null;
-  }
-  function hasTraitUpgrade(u){
-    return !!(u&&u.traitUpgrades&&u.traitUpgrades.main);
-  }
-  function traitPointCount(){
-    return (G.items&&G.items[TRAIT_ITEM_ID])||0;
-  }
-  function traitQuickHtml(u){
-    let tr=window.TRAIT_UNITS&&window.TRAIT_UNITS[u.id];
-    if(!tr)return "";
-    let done=hasTraitUpgrade(u),owned=traitPointCount();
-    if(done)return '<span class="unitQuickChip done">특성완료: '+esc(tr[1])+'</span>';
-    return '<button class="unitQuickBtn" '+(owned<1?'disabled':'')+' onclick="unlockTraitUpgrade('+u.uid+')">특성강화 1P</button><span class="unitQuickChip">포인트 '+owned+'</span>';
-  }
-  function tierUpgradeQuickHtml(u){
-    if(typeof tierUpgradeKeyFor!=="function"||typeof tierUpgradeRuleByKey!=="function")return "";
-    let key=tierUpgradeKeyFor(u),rule=key?tierUpgradeRuleByKey(key):null;
-    if(!key||!rule)return "";
-    let lv=typeof tierUpgradeLevelFor==="function"?tierUpgradeLevelFor(u):((G.tierUpgrades&&G.tierUpgrades[key])||0);
-    let label=(typeof TIER_UPGRADE_LABELS!=="undefined"&&TIER_UPGRADE_LABELS[key])||key;
-    if(lv>=rule.max)return '<span class="unitQuickChip done">'+esc(label)+' MAX</span>';
-    let cost=typeof tierUpgradeCostForKey==="function"?tierUpgradeCostForKey(key):Infinity;
-    let costText=Number.isFinite(cost)?cost.toLocaleString()+"G":"업글";
-    return '<button class="unitQuickBtn" '+(G.gold<cost?'disabled':'')+' onclick="buyTierUpgrade(\''+key+'\')">등급업 '+costText+'</button><span class="unitQuickChip">'+esc(label)+' '+lv+'/'+rule.max+'</span>';
-  }
-  function unitRecipeShortcuts(u){
-    if(!u||!Array.isArray(RECIPES))return [];
-    let d=def(u),baseLv=d.level||0,excluded=new Set(["random_only","etc","special_extra","navigation","lab","item"]);
-    return RECIPES.filter(r=>{
-      let out=UNIT_MAP[r.resultId];
-      if(!out||excluded.has(out.tier)||!r.conds||!r.conds.some(c=>c.id===u.id))return false;
-      let outLv=out.level||0;
-      if(baseLv>=1&&baseLv<=4)return outLv===baseLv+1;
-      if(baseLv>=5&&baseLv<=6)return outLv>baseLv&&outLv<=12;
-      return outLv>baseLv;
-    }).sort((a,b)=>{
-      let ca=canCraft(a)?1:0,cb=canCraft(b)?1:0,da=UNIT_MAP[a.resultId],db=UNIT_MAP[b.resultId];
-      return (cb-ca)||((da.level||99)-(db.level||99))||(da.name||"").localeCompare(db.name||"");
-    }).slice(0,2);
-  }
-  window.openRecipeShortcut=function(code){
-    let r=RECIPES.find(x=>String(x.code)===String(code)||String(x.resultId)===String(code));if(!r)return;
-    let d=UNIT_MAP[r.resultId];
-    G.pinnedRecipe=r.code;
-    G.recipeTier="all";
-    let input=$("recipeSearch");
-    if(input)input.value=d?d.name:"";
-    if(typeof renderRecipes==="function")renderRecipes();
-    if(typeof openModal==="function")openModal("combineModal");
-    if(typeof log==="function"&&d)log("상위 조합 보기: "+d.name,"sys");
-  };
-  window.openUnitQuickInfo=function(){
-    if(typeof syncMobileInfoSheet==="function")syncMobileInfoSheet();
-    if(typeof mobileUiActive==="function"&&mobileUiActive()&&typeof openMobileInfoSheet==="function"){openMobileInfoSheet();return}
-    let el=$("selected");
-    if(el&&typeof el.scrollIntoView==="function")el.scrollIntoView({block:"nearest"});
-  };
-  function recipeQuickHtml(u){
-    let rows=unitRecipeShortcuts(u);
-    if(!rows.length)return "";
-    return rows.map(r=>{
-      let d=UNIT_MAP[r.resultId],ok=canCraft(r),code=safeJsArg(r.code),label=d.name;
-      return '<button class="unitQuickBtn recipe '+(ok?'ready':'')+'" onclick=\'openRecipeShortcut('+code+')\'>'+esc(label)+'</button>';
-    }).join("");
-  }
-  function unitQuickHtml(){
-    let u=selectedUnit(),bar=$("unitQuickBar");
-    if(!bar||!u)return "";
-    let d=def(u),parts=[];
-    parts.push('<span class="unitQuickTitle" style="color:'+tier(d).color+'">'+esc(d.name)+'</span>');
-    let recipeHtml=recipeQuickHtml(u),traitHtml=traitQuickHtml(u);
-    if(recipeHtml)parts.push(recipeHtml);
-    if(traitHtml)parts.push(traitHtml);
-    parts.push('<button class="unitQuickBtn info" onclick="openUnitQuickInfo()">정보</button>');
-    if(parts.length<=1)return "";
-    return parts.join("");
-  }
-  window.syncUnitQuickBar=function(){
-    let bar=$("unitQuickBar");if(!bar)return;
-    let html=unitQuickHtml();
-    bar.classList.toggle("on",!!html);
-    if(bar.innerHTML!==html)bar.innerHTML=html;
-  };
-  const __quickSelInfo=selInfo;
-  selInfo=function(){__quickSelInfo();syncUnitQuickBar()};
-  const __quickUiLite=uiLite;
-  uiLite=function(){__quickUiLite();syncUnitQuickBar()};
-  function startQuickBarWatch(){
-    syncUnitQuickBar();
-    let selected=$("selected");
-    if(selected&&typeof MutationObserver!=="undefined"){
-      new MutationObserver(syncUnitQuickBar).observe(selected,{childList:true,subtree:true,characterData:true});
-    }
-    let bar=$("unitQuickBar");
-    if(bar&&!bar.dataset.quickBound){
-      bar.dataset.quickBound="1";
-      bar.addEventListener("click",e=>e.stopPropagation());
-      bar.addEventListener("touchstart",e=>e.stopPropagation(),{passive:true});
-    }
-    setInterval(syncUnitQuickBar,250);
-  }
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",startQuickBarWatch);else startQuickBarWatch();
 })();
 // ===== LOW TIER STUN GATE =====
 (function(){
