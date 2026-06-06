@@ -514,14 +514,17 @@ const COMBAT_GOLD_EXTRA_RATE=1.2;
 function isGodMode(){try{return G&&G.difficulty==="god"}catch(e){return false}}
 function waveGoldMult(w){let base=w>=30?.6:1;return base*(isGodMode()?(w>=30?1.4:1.2):1)*COMBAT_GOLD_EXTRA_RATE}
 function difficultyProfile(){
-  const currentHard={lateCount:80,mresMult:1.00,speedMult:1.00,normalHpMult:1.00,bossHpMult:1.00};
+  const currentHard={lateCount:85,mresMult:1.00,speedMult:1.00,normalHpMult:1.00,bossHpMult:1.00};
   return isGodMode()
     ?{...currentHard,label:"신모드"}
     :{...currentHard,label:"하드모드"}
 }
-function hardPost30HpMult(w){w=+w||G.wave||1;return(!isGodMode()&&w>=30)?.8:1}
-function waveNormalHpMult(w=G.wave){return difficultyProfile().normalHpMult*hardPost30HpMult(w)}
-function waveBossHpMult(w=G.wave){return difficultyProfile().bossHpMult*hardPost30HpMult(w)*(!isGodMode()&&w>=50?.75:1)}
+function legacyHardPost30HpMult(w){w=+w||G.wave||1;return w>=30?.8:1}
+function legacyHardBossLateRelief(w){w=+w||G.wave||1;return w>=50?.75:1}
+function hardWave34Relief(w){w=+w||G.wave||1;return(!isGodMode()&&w>=34)?.697:1}
+function waveNormalHpMult(w=G.wave){return difficultyProfile().normalHpMult*legacyHardPost30HpMult(w)*hardWave34Relief(w)}
+function waveBossHpMult(w=G.wave){return difficultyProfile().bossHpMult*legacyHardPost30HpMult(w)*hardWave34Relief(w)*legacyHardBossLateRelief(w)}
+function waveArmorMult(w=G.wave){return hardWave34Relief(w)}
 function waveMresMult(){return difficultyProfile().mresMult}
 function waveSpeedMult(){return difficultyProfile().speedMult}
 const STORY_REWARDS=[
@@ -4119,14 +4122,14 @@ function waveDifficulty(w){
 }
 function isBossWave(w){return w>0&&(w<=50?w%10===0:w%5===0)}
 function buildWave(w){
-  let boss=isBossWave(w),base=Math.round((64+w*24+Math.max(0,w-18)*3)*1.2),sp=33+Math.min(30,w),cnt=(boss&&w<=50)?0:35,q=[],sprite=VILLAINS[w%VILLAINS.length]||null,diff=waveDifficulty(w),bossTough=2.08,spdMult=waveSpeedMult(),mresMult=waveMresMult();
-  let hpMult=diff.hp*waveNormalHpMult(w), normalRelief=(w>=47&&w<=55)?.88:(w>=57&&w<=60)?.91:1, armorMult=diff.armor;
+  let boss=isBossWave(w),base=Math.round((64+w*24+Math.max(0,w-18)*3)*1.2),sp=33+Math.min(30,w),cnt=(boss&&w<=50)?0:35,q=[],sprite=VILLAINS[w%VILLAINS.length]||null,diff=waveDifficulty(w),bossTough=2.08,spdMult=waveSpeedMult(),mresMult=waveMresMult(),hardRelief=waveArmorMult(w);
+  let hpMult=diff.hp*waveNormalHpMult(w), normalRelief=(w>=47&&w<=55)?.88:(w>=57&&w<=60)?.91:1;
   for(let i=0;i<cnt;i++){
-    let elite=w>=45&&i%7===0,bulwark=w>=60&&i%11===0,unitHp=Math.round(base*hpMult*normalRelief*(elite?1.16:1)*(bulwark?1.08:1)),armor=Math.max(0,Math.round((w*1.45-6)*armorMult+(bulwark?8:0))),mres=Math.max(0,Math.round(((w*1.1-8)*armorMult+(elite?6:0))*mresMult));
+    let elite=w>=45&&i%7===0,bulwark=w>=60&&i%11===0,unitHp=Math.round(base*hpMult*normalRelief*(elite?1.16:1)*(bulwark?1.08:1)),armor=Math.max(0,Math.round(((w*1.45-6)*diff.armor+(bulwark?8:0))*hardRelief)),mres=Math.max(0,Math.round(((w*1.1-8)*diff.armor+(elite?6:0))*mresMult*hardRelief));
     q.push({hp:unitHp,max:unitHp,spd:Math.round(sp*(elite?.94:1)*spdMult),size:15+Math.min(9,w/7)+(bulwark?2:0),reward:Math.round((10+w)*0.7*WAVE_GOLD_RATE*waveGoldMult(w)),armor,armorBase:armor,mres,mresBase:mres,amp:0,color:bulwark?"#77623b":elite?"#4b6f94":i%2?"#527f55":"#326e8e",sprite:sprite?.id,idx:0,prog:0,alive:true,stun:0,dot:0,boss:false,name:bulwark?"중갑 몬스터":elite?"저항 몬스터":undefined})
   }
   if(boss){
-    let hp=Math.round(base*(16+Math.floor(w/10))*diff.bossHp*bossTough*waveBossHpMult(w)*(w===50?.88:1)),bd=VILLAINS[(w/5|0)%VILLAINS.length]||sprite,armor=Math.round(w*3.4*armorMult),mres=Math.round(w*2.4*armorMult*mresMult);
+    let hp=Math.round(base*(16+Math.floor(w/10))*diff.bossHp*bossTough*waveBossHpMult(w)*(w===50?.88:1)),bd=VILLAINS[(w/5|0)%VILLAINS.length]||sprite,armor=Math.round(w*3.4*diff.armor*hardRelief),mres=Math.round(w*2.4*diff.armor*mresMult*hardRelief);
     q.push({hp:hp,max:hp,spd:Math.round(29*spdMult),size:31,reward:Math.round((350+w*70)*0.7*WAVE_GOLD_RATE*waveGoldMult(w)),armor,armorBase:armor,mres,mresBase:mres,amp:0,color:"#8b0000",sprite:bd?.id,idx:0,prog:0,alive:true,stun:0,dot:0,boss:true,bossRound:w,name:(bd?.name||"BOSS")+" "+w})
   }
   return q
@@ -4373,7 +4376,19 @@ function loop(t){let dt=Math.min((t-G.last)/1000,.05);G.last=t;if(!G.paused){upd
   function newWorldLineHp(w){
     if(isGodMode()||w<53)return 0;
     const curve={53:2600000,54:3100000,55:3600000,56:4300000,57:5100000,58:6000000,59:7000000,60:8200000,61:9600000,62:11200000,63:13000000,64:15000000,65:17300000,66:19900000,67:22800000,68:26000000,69:29600000,70:33600000,71:38000000,72:42800000,73:48000000,74:53600000,75:59600000};
-    return curve[w]||0;
+    const relief=w>=71?.72:w>=66?.78:w>=61?.82:w>=60?.90:1;
+    return Math.round((curve[w]||0)*relief);
+  }
+  function hardTransitionLineHp(w){
+    if(isGodMode())return 0;
+    if(w===47)return 5100000;
+    if(w===48)return 5200000;
+    if(w===49)return 5600000;
+    return w===51||w===52?2500000:0;
+  }
+  function hardBossHpRelief(w){
+    if(isGodMode())return 1;
+    return w===50?.80:1;
   }
   buildWave=function(w){
     const q=__origBuildWave(w);
@@ -4385,8 +4400,8 @@ function loop(t){let dt=Math.min((t-G.last)/1000,.05);G.last=t;if(!G.paused){upd
       const hpScale=m.boss?waveBossHpMult(w):waveNormalHpMult(w);
       const midLineRelief=(!m.boss&&!isGodMode()&&w>=41&&w<=55)?({41:.82,42:.78,43:.74,44:.70,45:.66,46:.56,47:.52,48:.42,49:.44,51:.42,52:.40,53:.58,54:.66,55:.56}[w]||.82):1;
       const hardLateLineRelief=(!m.boss&&!isGodMode()&&w>=56&&w<=72)?(w<=60?.82:.86):1;
-      const nwHp=!m.boss?newWorldLineHp(w):0;
-      const scaledHp=nwHp||Math.max(1,Math.round(use.hp*hpScale*midLineRelief*hardLateLineRelief));
+      const nwHp=!m.boss?(hardTransitionLineHp(w)||newWorldLineHp(w)):0;
+      const scaledHp=nwHp||Math.max(1,Math.round(use.hp*hpScale*midLineRelief*hardLateLineRelief*hardBossHpRelief(w)));
       m.hp=scaledHp; m.max=scaledHp;
       m.armor=use.armor; m.armorBase=use.armor;
       m.mres=use.mres; m.mresBase=use.mres;
