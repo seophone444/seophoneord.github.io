@@ -95,7 +95,7 @@ html.ios-lite #skillCutin img{opacity:.32;filter:none;transform:scale(1);animati
 #bossFill{height:100%;background:linear-gradient(90deg,#7b241c,#e74c3c)}
 #bossText{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:white;font-family:Consolas,monospace}
 #mobileHud{display:none}
-#right{min-width:0;border-left:2px solid var(--line);background:var(--panel);display:flex;flex-direction:column}
+#right{min-width:0;border-left:2px solid var(--line);background:var(--panel);display:flex;flex-direction:column;position:relative}
 .tabs{height:30px;display:flex;border-bottom:1px solid var(--line)}
 .tab{flex:1;border:0;border-right:1px solid #241707;background:#100b04;color:var(--muted);font-size:11px;cursor:pointer}
 .tab.on{color:var(--gold);box-shadow:inset 0 -2px 0 var(--gold)}
@@ -137,12 +137,9 @@ html.ios-lite #skillCutin img{opacity:.32;filter:none;transform:scale(1);animati
 .mini canvas{width:100%;height:100%;display:block}
 .mlabel{position:absolute;left:4px;top:2px;font:10px Consolas;color:var(--gold)}
 @media(min-width:901px){
-  #bottom{overflow:hidden}
-  #miniPanel{height:174px!important;max-height:174px!important;min-height:0;overflow:hidden;align-self:start}
-  #miniPanel .panelTitle{display:none}
-  #minis{flex:0 0 174px!important;height:174px!important;max-height:174px;min-height:0;box-sizing:border-box;grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(0,1fr))!important;align-content:stretch;overflow:hidden}
-  .mini{height:auto;min-height:0}
-  .mini[data-view="4"] .mlabel{font-weight:900;color:#8ed8ff}
+  #miniPanel{height:174px;max-height:174px;overflow:hidden;align-self:start}
+  #minis{height:174px;max-height:174px;box-sizing:border-box;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));overflow:hidden}
+  .mini{min-height:0}
 }
 #actions{min-width:0;display:flex;flex-direction:column;padding:7px;gap:5px}
 .row{display:flex;gap:5px}
@@ -227,7 +224,7 @@ html.min-fx #skillCutin{display:none!important}
   .stat b{font-size:12px;min-width:28px}
   .speed{margin-left:auto;flex:0 0 auto;width:auto;max-width:100%;justify-content:flex-start;flex-wrap:wrap}
   .speed button,.tiny-btn{padding:5px 10px;font-size:12px}
-  #main{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr;grid-template-rows:minmax(230px,1fr) 112px;width:100vw;max-width:100vw;overflow:hidden}
+  #main{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr;grid-template-rows:minmax(230px,1fr) 168px;width:100vw;max-width:100vw;overflow:hidden}
   #mapWrap{min-height:0!important;max-height:none;width:100%;overflow:hidden}
   #mobileHud{position:absolute;left:8px;right:8px;top:8px;z-index:9;display:flex;gap:5px;flex-wrap:wrap;pointer-events:none}
   .hudChip{border:1px solid #5e4215;background:#090501c8;color:#f3dfaa;border-radius:999px;padding:3px 7px;font:900 10px/1.25 Consolas,"Malgun Gothic",sans-serif;box-shadow:0 2px 10px #0008}
@@ -239,10 +236,10 @@ html.min-fx #skillCutin{display:none!important}
   .tabs{height:28px;flex:0 0 28px}
   .tab{font-size:10px}
   .scroll{padding:4px;min-height:0;overflow-x:auto;overflow-y:hidden;white-space:nowrap;-webkit-overflow-scrolling:touch}
-  #panelInv,#panelPlaced,#panelLog{min-height:0;height:53px}
-  #selected{max-height:29px;min-height:29px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:8.5px;line-height:1.2;padding:4px 54px 4px 6px;position:relative;cursor:pointer}
-  #selected::after{content:"정보";position:absolute;right:6px;top:50%;transform:translateY(-50%);border:1px solid #8b6420;border-radius:999px;padding:2px 7px;background:#1b1005;color:#ffd66b;font-size:9px}
-  #selected button{font-size:9px!important;padding:2px 5px!important;margin-top:2px!important}
+  #panelInv,#panelPlaced,#panelLog{min-height:0;height:45px}
+  #selected{max-height:95px;min-height:95px;overflow-y:auto;overflow-x:hidden;white-space:normal;text-overflow:clip;font-size:9px;line-height:1.28;padding:6px 52px 6px 7px;position:relative;cursor:pointer;background:linear-gradient(#100903,#050302);box-shadow:inset 0 1px 0 #d4a01733}
+  #selected::after{content:"정보";position:absolute;right:6px;top:6px;transform:none;border:1px solid #8b6420;border-radius:999px;padding:2px 7px;background:#1b1005;color:#ffd66b;font-size:9px}
+  #selected button{font-size:9px!important;padding:2px 6px!important;margin-top:2px!important}
   .hintTitle{margin-top:3px;padding-top:3px}
   .hintRow{padding:4px;margin-top:3px}
   .hintMats{font-size:8px}
@@ -258,13 +255,11 @@ html.min-fx #skillCutin{display:none!important}
   #bottom{height:132px;flex:0 0 calc(132px + env(safe-area-inset-bottom));grid-template-columns:120px minmax(0,1fr);width:100vw;max-width:100vw;overflow:hidden;padding-bottom:env(safe-area-inset-bottom)}
   #miniPanel{display:flex;border-right:2px solid var(--line);border-bottom:0;width:120px;min-width:0}
   #miniPanel .panelTitle{display:none}
-  #minis{grid-template-columns:1fr 1.35fr;grid-template-rows:repeat(3,1fr);gap:2px;padding:3px;min-height:0;min-width:0}
+  #minis{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:2px;padding:3px;min-height:0;min-width:0}
   .mini{min-height:0;min-width:0}
   .mlabel{font-size:8px;left:2px;top:1px}
-  .mini[data-view="4"]{grid-column:2;grid-row:1 / span 3;border-color:#315b87}
-  .mini[data-view="4"] .mlabel{left:50%;top:50%;transform:translate(-50%,-50%);font-size:10px;font-weight:900;color:#8ed8ff;text-align:center;text-shadow:0 1px 3px #000;white-space:nowrap}
   #actions{padding:4px;gap:3px;width:100%;min-width:0;max-width:100%;overflow:hidden}
-  #actions .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;min-width:0;max-width:100%}
+  #actions .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;min-width:0;max-width:100%;flex:1 1 0;min-height:0}
   #actions .row:first-child{grid-template-columns:repeat(2,minmax(0,1fr))}
   #actions .row:last-child{grid-template-columns:repeat(4,minmax(0,1fr))}
   #waveInfo{display:none}
@@ -272,6 +267,7 @@ html.min-fx #skillCutin{display:none!important}
   .wcBtn[data-mobile-label]{font-size:0}
   .wcBtn[data-mobile-label]::before{content:attr(data-mobile-label);font-size:10px}
   .wcBtn[data-mobile-label] #freeCnt{font-size:10px;margin-left:2px}
+  #actions .wcBtn{height:100%;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.1}
   .wcBtn{padding:5px 2px;font-size:9px}
   .wcBtn.big{font-size:10px}
   #typeCode{padding:6px 7px;font-size:11px}
@@ -299,9 +295,9 @@ html.min-fx #skillCutin{display:none!important}
   .stat b{font-size:11px}
   #top .stat:has(#kills),#top .stat:has(#unitCount){display:none}
   .speed button,.tiny-btn{padding:4px 8px;font-size:11px}
-  #main{grid-template-rows:minmax(210px,1fr) 104px}
-  #panelInv,#panelPlaced,#panelLog{height:50px}
-  #selected{max-height:26px;min-height:26px;font-size:8px}
+  #main{grid-template-rows:minmax(210px,1fr) 158px}
+  #panelInv,#panelPlaced,#panelLog{height:44px}
+  #selected{max-height:86px;min-height:86px;font-size:8.5px;line-height:1.25;padding:5px 50px 5px 6px}
   .unitCard{width:108px;min-height:42px}
   #bottom{height:124px;flex-basis:calc(124px + env(safe-area-inset-bottom));grid-template-columns:108px minmax(0,1fr)}
   #miniPanel{width:108px}
@@ -518,14 +514,17 @@ const COMBAT_GOLD_EXTRA_RATE=1.2;
 function isGodMode(){try{return G&&G.difficulty==="god"}catch(e){return false}}
 function waveGoldMult(w){let base=w>=30?.6:1;return base*(isGodMode()?(w>=30?1.4:1.2):1)*COMBAT_GOLD_EXTRA_RATE}
 function difficultyProfile(){
-  const currentHard={lateCount:80,mresMult:1.00,speedMult:1.00,normalHpMult:1.00,bossHpMult:1.00};
+  const currentHard={lateCount:85,mresMult:1.00,speedMult:1.00,normalHpMult:1.00,bossHpMult:1.00};
   return isGodMode()
     ?{...currentHard,label:"신모드"}
     :{...currentHard,label:"하드모드"}
 }
-function hardPost30HpMult(w){w=+w||G.wave||1;return(!isGodMode()&&w>=30)?.8:1}
-function waveNormalHpMult(w=G.wave){return difficultyProfile().normalHpMult*hardPost30HpMult(w)}
-function waveBossHpMult(w=G.wave){return difficultyProfile().bossHpMult*hardPost30HpMult(w)*(!isGodMode()&&w>=50?.75:1)}
+function legacyHardPost30HpMult(w){w=+w||G.wave||1;return w>=30?.8:1}
+function legacyHardBossLateRelief(w){w=+w||G.wave||1;return w>=50?.75:1}
+function hardWave34Relief(w){w=+w||G.wave||1;return(!isGodMode()&&w>=34)?.697:1}
+function waveNormalHpMult(w=G.wave){return difficultyProfile().normalHpMult*legacyHardPost30HpMult(w)*hardWave34Relief(w)}
+function waveBossHpMult(w=G.wave){return difficultyProfile().bossHpMult*legacyHardPost30HpMult(w)*hardWave34Relief(w)*legacyHardBossLateRelief(w)}
+function waveArmorMult(w=G.wave){return hardWave34Relief(w)}
 function waveMresMult(){return difficultyProfile().mresMult}
 function waveSpeedMult(){return difficultyProfile().speedMult}
 const STORY_REWARDS=[
@@ -1460,13 +1459,13 @@ function mk(id){
     normalizedLegendSkill.prob=finalSpd<=1.6?.04:.02;
   }
   let fastLegendHidden=(d.tier==="legend"||d.tier==="hidden")&&finalSpd>=1.30;
-  let startLvl=rank>=5?10:1;
+  let startLvl=rank>=5?10:1,stunAllowed=rank>=tierRank("rare");
   return{
     uid:++G.uid,id:id,x:0,y:0,c:-1,r:-1,placed:false,
     atk:ov.fixedAtk??(s[0]+lv*4+(ov.bonusAtk||0)),spd:finalSpd,range:range,hp:s[3],maxHp:s[3],lvl:startLvl,exp:0,kills:0,
     dmgType:mag?"magic":"phys",armorRed:ov.armorRed??(skill?Math.min(65,16+lv*4):0),mresRed:ov.mresRed??(skill&&mag?Math.min(35,10+lv*2):0),
-    buffSpd:ov.noBuffSpd?0:(skill&&rank>=5?.12:0),crit:ov.crit??(skill?.18:rank>=3?.08:0),stun:ov.stun??(skill&&lv>=6?.45:0),stunProc:ov.stunProc??.22,
-    dot:ov.dot??(skill&&lv>=8),amp:ov.amp??(skill&&lv>=10?.15:0),splash:ov.splash||0,splashTiles:ov.splashTiles||0,freezeHit:ov.freezeHit||0,areaStun:!!ov.areaStun,legendSkill:normalizedLegendSkill,skillSpdPct:0,skillSpdT:0,firePillar:ov.firePillar||null,thunderBagua:ov.thunderBagua||null,featherBomb:ov.featherBomb||null,quakeFruit:ov.quakeFruit||null,spatialRift:ov.spatialRift||null,hakiSword:ov.hakiSword||null,kamusari:ov.kamusari||null,scopperCommand:ov.scopperCommand||null,darkKing:ov.darkKing||null,bulletSkill:ov.bulletSkill||null,chargeBuster:ov.chargeBuster||null,galaxyImpact:ov.galaxyImpact||null,windFruit:ov.windFruit||null,dragonStorm:ov.dragonStorm||null,bigMomMadness:ov.bigMomMadness||null,bigMomFrenzyT:0,guardianNari:ov.guardianNari||null,magnetFruit:ov.magnetFruit||null,punkGibson:ov.punkGibson||null,blackLeg:ov.blackLeg||null,diableJambe:ov.diableJambe||null,redForce:ov.redForce||null,blackBlade:ov.blackBlade||null,multiAttack:ov.multiAttack||0,chopperGuardPoint:!!ov.chopperGuardPoint,charismaSpd:ov.charismaSpd||0,selfAtkPct:ov.selfAtkPct||0,selfSpdPct:(ov.selfSpdPct||0)+(ov.charismaSpd||0),auraSelf:!!ov.auraSelf,auraArmorRed:ov.auraArmorRed||0,auraRange:ov.auraRange||0,auraArmorTiles:ov.auraArmorTiles||0,auraSlowPct:ov.auraSlowPct||0,auraSlowRange:ov.auraSlowRange||0,auraSlowTiles:ov.auraSlowTiles||0,auraSpdPct:ov.auraSpdPct||0,auraSpdRange:ov.auraSpdRange||0,auraSpdTiles:ov.auraSpdTiles||0,auraAtkPct:ov.auraAtkPct||0,auraAtkRange:ov.auraAtkRange||0,auraAtkTiles:ov.auraAtkTiles||0,
+    buffSpd:ov.noBuffSpd?0:(skill&&rank>=5?.12:0),crit:ov.crit??(skill?.18:rank>=3?.08:0),stun:stunAllowed?(ov.stun??(skill&&lv>=6?.45:0)):0,stunProc:ov.stunProc??.22,
+    dot:ov.dot??(skill&&lv>=8),amp:ov.amp??(skill&&lv>=10?.15:0),splash:ov.splash||0,splashTiles:ov.splashTiles||0,freezeHit:ov.freezeHit||0,areaStun:stunAllowed&&!!ov.areaStun,legendSkill:normalizedLegendSkill,skillSpdPct:0,skillSpdT:0,firePillar:ov.firePillar||null,thunderBagua:ov.thunderBagua||null,featherBomb:ov.featherBomb||null,quakeFruit:ov.quakeFruit||null,spatialRift:ov.spatialRift||null,hakiSword:ov.hakiSword||null,kamusari:ov.kamusari||null,scopperCommand:ov.scopperCommand||null,darkKing:ov.darkKing||null,bulletSkill:ov.bulletSkill||null,chargeBuster:ov.chargeBuster||null,galaxyImpact:ov.galaxyImpact||null,windFruit:ov.windFruit||null,dragonStorm:ov.dragonStorm||null,bigMomMadness:ov.bigMomMadness||null,bigMomFrenzyT:0,guardianNari:ov.guardianNari||null,magnetFruit:ov.magnetFruit||null,punkGibson:ov.punkGibson||null,blackLeg:ov.blackLeg||null,diableJambe:ov.diableJambe||null,redForce:ov.redForce||null,blackBlade:ov.blackBlade||null,multiAttack:ov.multiAttack||0,chopperGuardPoint:!!ov.chopperGuardPoint,charismaSpd:ov.charismaSpd||0,selfAtkPct:ov.selfAtkPct||0,selfSpdPct:(ov.selfSpdPct||0)+(ov.charismaSpd||0),auraSelf:!!ov.auraSelf,auraArmorRed:ov.auraArmorRed||0,auraRange:ov.auraRange||0,auraArmorTiles:ov.auraArmorTiles||0,auraSlowPct:ov.auraSlowPct||0,auraSlowRange:ov.auraSlowRange||0,auraSlowTiles:ov.auraSlowTiles||0,auraSpdPct:ov.auraSpdPct||0,auraSpdRange:ov.auraSpdRange||0,auraSpdTiles:ov.auraSpdTiles||0,auraAtkPct:ov.auraAtkPct||0,auraAtkRange:ov.auraAtkRange||0,auraAtkTiles:ov.auraAtkTiles||0,
     // 발동형 단일/방깎 보정 스킬: 스플래시/이감 없는 유닛에게 부여
     // rare=12%, legend/hidden/limit=22%, fast legend/hidden=15%, trans/mysterious=50%, imm=65%, eternal=30%
     burstSkill:ov.forceBurst||((!ov.noBurst&&!ov.splash&&!ov.freezeHit)?(
@@ -1477,7 +1476,7 @@ function mk(id){
       rank>=4?{prob:.22,dmgMult:2.4,radius:2.0,label:"폭격"}:
       rank>=3?{prob:.12,dmgMult:1.8,radius:1.6,label:"일격"}:null
     ):null),
-    fxTier:rank>=3,critMult:ov.critMult||2.2,luffyCombo:!!ov.luffyCombo,luffyWide:ov.luffyWide||0,extraProc:ov.extraProc||0,extraFlat:ov.extraFlat||0,luffyComboStun:ov.luffyComboStun||0,timer:0,
+    fxTier:rank>=3,critMult:ov.critMult||2.2,luffyCombo:!!ov.luffyCombo,luffyWide:ov.luffyWide||0,extraProc:ov.extraProc||0,extraFlat:ov.extraFlat||0,luffyComboStun:stunAllowed?(ov.luffyComboStun||0):0,timer:0,
     // 샹크스 초월 전용
     zoro:(id==="ord_191"||id==="ord_321"||id==="ord_323")?{
       mana:0, manaCap:145, manaRegen:1.8,   // 비격 삼천대천세계 마나
@@ -1503,9 +1502,30 @@ function mk(id){
   }
 }
 function def(u){return UNIT_MAP[u.id]}
-function canUnitApplyStun(u){let d=u&&def(u);return !!d&&tierRank(d.tier)>=4}
+function canUnitApplyStun(u){let d=u&&def(u);return !!d&&tierRank(d.tier)>=tierRank("rare")}
+function canUnitReachForStun(u,target){
+  if(!u||!target||!Number.isFinite(u.x)||!Number.isFinite(u.y)||!Number.isFinite(target.x)||!Number.isFinite(target.y))return false;
+  return dist(u,target)<=((u.range||0)+(target.size||14)+G.tile*.35);
+}
+function monsterPathSide(m){
+  if(!m)return "";
+  let p=(G.path&&G.path[m.idx])||tile(m.x||0,m.y||0),c=p&&p.c,r=p&&p.r;
+  if(r===1)return "top";
+  if(c===G.cols-2)return "right";
+  if(r===G.rows-2)return "bottom";
+  if(c===1)return "left";
+  return "";
+}
+function canUnitStunSameSide(target){
+  return !G._stunSide||monsterPathSide(target)===G._stunSide;
+}
+function withUnitStunSide(anchor,fn){
+  const prev=G._stunSide;
+  G._stunSide=monsterPathSide(anchor)||prev||"";
+  try{return fn()}finally{G._stunSide=prev}
+}
 function applyUnitStun(u,target,seconds){
-  if(!target||!seconds||G.freezeT>0||!canUnitApplyStun(u))return false;
+  if(!target||!seconds||G.freezeT>0||!canUnitApplyStun(u)||!canUnitReachForStun(u,target)||!canUnitStunSameSide(target))return false;
   target.stun=Math.max(target.stun||0,seconds);
   return true;
 }
@@ -2220,7 +2240,7 @@ function damage(u,m,dmgMult=1){
   if(u.luffyCombo&&Math.random()<u.extraProc){
     let comboDmg=Math.max(1,u.atk*2.5+u.extraFlat);
     m.hp-=comboDmg;
-    m.stun=Math.max(m.stun,u.luffyComboStun||1.3);
+    applyUnitStun(u,m,u.luffyComboStun||1.3);
     burst(m.x,m.y,"#ff934d",16);
     impactFx(m.x,m.y,"magic",6);
     floatText(m.x,m.y-18,"JET x2","#ff934d",18);
@@ -2241,7 +2261,7 @@ function damage(u,m,dmgMult=1){
     if(rz<0.25){
       let crit10=d*3.5+u.atk*2;
       let fd=Math.max(1,crit10-m.armor);
-      m.hp-=fd; m.stun=Math.max(m.stun||0,3.0);
+      m.hp-=fd; applyUnitStun(u,m,3.0);
       floatText(m.x,m.y-26,"이강력참!","#ffd700",17);
       impactFx(m.x,m.y,"phys",_LITE?3:7);
     }
@@ -2252,7 +2272,7 @@ function damage(u,m,dmgMult=1){
       zoroAoe(u,m.x,m.y,r415,base572,0,false);
       // 단일 150% 추가 + 2초 스턴
       let single_extra=Math.max(1,base572*1.5-m.armor);
-      m.hp-=single_extra; m.stun=Math.max(m.stun||0,2.0);
+      m.hp-=single_extra; applyUnitStun(u,m,2.0);
       floatText(m.x,m.y-28,"사자의 노래!","#ffee88",17);
       impactFx(m.x,m.y,"phys",_LITE?3:7);
     }
@@ -2305,7 +2325,7 @@ function damage(u,m,dmgMult=1){
       luffyAoe(u,m.x,m.y,r425,jd_magic,0,true);
       let fd2=Math.max(1,jd_phys-m.armor);
       m.hp-=fd2;
-      m.stun=Math.max(m.stun||0,1.3);
+      applyUnitStun(u,m,1.3);
       // 33% 둔화 2초
       G.monsters.forEach(o=>{
         if(o.alive&&Math.hypot(o.x-m.x,o.y-m.y)<=r425)
@@ -2334,7 +2354,7 @@ function damage(u,m,dmgMult=1){
     if(Math.random()<elephantProb){
       let elephantDmg=u.atk*(m.boss||m.enraged?7:4.2);
       let efd=Math.max(1,elephantDmg-m.armor);
-      m.hp-=efd; m.stun=Math.max(m.stun||0,2.0);
+      m.hp-=efd; applyUnitStun(u,m,2.0);
       floatText(m.x,m.y-30,"엘리펀트 건!","#ffcc00",18);
       impactFx(m.x,m.y,"phys",_LITE?3:8);
     }
@@ -2349,7 +2369,7 @@ function damage(u,m,dmgMult=1){
       let crit_dmg=d*3.5+u.atk*3;
       let fd=Math.max(1,crit_dmg-m.armor);
       m.hp-=fd;
-      m.stun=Math.max(m.stun||0,2.0);
+      applyUnitStun(u,m,2.0);
       floatText(m.x,m.y-28,"패기의 검술!","#ffd700",17);
       impactFx(m.x,m.y,"phys",_LITE?3:7);
     }
@@ -2787,7 +2807,7 @@ function zoroAoe(u, cx, cy, radius, dmg, stun_sec, magic=false){
     let scaled=dmg*AOE_DAMAGE_MULT;
     let fd=applyResistDamage(scaled,magic?m.mres:m.armor,m);
     m.hp-=fd;
-    if(stun_sec>0) m.stun=Math.max(m.stun||0, stun_sec);
+    if(stun_sec>0) applyUnitStun(u,m,stun_sec);
     burst(m.x,m.y,magic?"#88bbff":"#ffe060",4);
     floatText(m.x,m.y-16,Math.floor(fd/10000)+"만",magic?"#88bbff":"#ffe060",11);
     if(m.hp<=0&&m.alive){m.alive=false;G.kills++;G.gold+=Math.floor(m.reward*(1+G.mods.gold))}
@@ -2849,7 +2869,7 @@ function updateZoroSkills(u, dt2){
         let mfd=Math.max(1,magic_dmg-m.mres);
         let pfd=Math.max(1,phys_dmg-m.armor);
         m.hp-=mfd+pfd;
-        m.stun=Math.max(m.stun||0,3.0); // 저항무시 3초 스턴
+        applyUnitStun(u,m,3.0); // 저항무시 3초 스턴
         if(m.hp<=0&&m.alive){m.alive=false;G.kills++;G.gold+=Math.floor(m.reward*(1+G.mods.gold))}
       });
       // 연속타 큐 등록 (1.15초간 0.15초마다 12만)
@@ -2872,7 +2892,7 @@ function luffyAoe(u, cx, cy, radius, dmg, stun_sec, magic=true){
     let scaled=dmg*AOE_DAMAGE_MULT;
     let fd=applyResistDamage(scaled,magic?m.mres:m.armor,m);
     m.hp-=fd;
-    if(stun_sec>0) m.stun=Math.max(m.stun||0,stun_sec);
+    if(stun_sec>0) applyUnitStun(u,m,stun_sec);
     burst(m.x,m.y,magic?"#ff6030":"#ffd060",4);
     floatText(m.x,m.y-18,Math.floor(fd/10000)+"만",magic?"#ff8844":"#ffd700",12);
     if(m.hp<=0&&m.alive){m.alive=false;G.kills++;G.gold+=Math.floor(m.reward*(1+G.mods.gold))}
@@ -2922,7 +2942,7 @@ function shanksAoeDmg(u, cx, cy, radius, dmg, stun_sec, magic=true){
     let scaled=dmg*AOE_DAMAGE_MULT;
     let finalDmg = magic ? Math.max(1, scaled - m.mres) : Math.max(1, scaled - m.armor);
     m.hp -= finalDmg;
-    if(stun_sec>0) m.stun=Math.max(m.stun||0, stun_sec);
+    if(stun_sec>0) applyUnitStun(u,m,stun_sec);
     floatText(m.x,m.y-20,Math.floor(finalDmg/10000)+"만",magic?"#c0aaff":"#ffd700",13);
     burst(m.x,m.y,"#c060ff",5);
     if(m.hp<=0&&m.alive){m.alive=false;G.kills++;G.gold+=Math.floor(m.reward*(1+G.mods.gold))}
@@ -2981,7 +3001,7 @@ function updateShanksSkills(u, dt2){
         ? m.hp*0.10          // 보스: 현재체력 10%
         : m.max*0.15) * AOE_DAMAGE_MULT;        // 일반: 전체체력 15%
       m.hp-=bonus;
-      m.stun=Math.max(m.stun||0,3.0);
+      applyUnitStun(u,m,3.0);
       if(m.hp<=0&&m.alive){m.alive=false;G.kills++;G.gold+=Math.floor(m.reward*(1+G.mods.gold))}
     });
     let sb2=activeStory(),sp2=storyCenter();
@@ -3020,7 +3040,7 @@ function updateShanksSkills(u, dt2){
         if(roll<0.0725){extra=(m.max*0.06+u.atk*4)*AOE_DAMAGE_MULT;stun2=3.0;shanksAoeDmg(u,m.x,m.y,auraR,u.atk*1.8,0,true)}
         else if(roll<0.16){extra=(m.max*0.03+u.atk*4)*AOE_DAMAGE_MULT;}
         m.hp-=Math.max(1,pct+extra-m.mres);
-        m.stun=Math.max(m.stun||0,stun2);
+        applyUnitStun(u,m,stun2);
         if(m.hp<=0&&m.alive){m.alive=false;G.kills++;G.gold+=Math.floor(m.reward*(1+G.mods.gold))}
       }
     });
@@ -3069,6 +3089,7 @@ function updateBreak(dt){
   let left=Math.ceil(G.breakCountdown);
   if($("breakTimerInline"))$("breakTimerInline").textContent=String(left);
   if($("breakTimer"))$("breakTimer").textContent=String(left);
+  if(G.gameMode==="multi"&&!isRoomHost())return;
   if(G.breakCountdown<=0&&!G.breakSkipped)skipBreak();
 }
 G._loopN=0;function loop(t){let dt=Math.min((t-G.last)/1000,.05);G.last=t;G._loopN++;if(!G.paused){updateBreak(dt);updateWaveClock(dt);updateSpawn(dt);updateMon(dt);updateStoryDebuffs(dt);updateUnits(dt);updateFx(dt)}draw();drawMini();if(G._loopN%3===0)uiLite();G.raf=requestAnimationFrame(loop)}
@@ -3574,11 +3595,11 @@ function procHakiSword(u,m){
   if(!hs||Math.random()>=(hs.prob||0))return;
   let half=G.tile*(hs.tiles||3)/2,raw=u.atk*(hs.mult||3)+(hs.flat||1000),dmg=applyResistDamage(raw,m.armor||0,m),hit=0;
   m.hp-=dmg;
-  m.stun=Math.max(m.stun||0,hs.stunSingle||.75);
+  applyUnitStun(u,m,hs.stunSingle||.75);
   G.monsters.forEach(o=>{
     if(!o.alive)return;
     if(Math.abs(o.x-m.x)<=half&&Math.abs(o.y-m.y)<=half){
-      o.stun=Math.max(o.stun||0,hs.stunArea||2);
+      applyUnitStun(u,o,hs.stunArea||2);
       burst(o.x,o.y,"#ffd700",10);
       hit++;
     }
@@ -3686,7 +3707,7 @@ function procChargeBuster(u,m){
     if(!o.alive||Math.abs(o.x-m.x)>half||Math.abs(o.y-m.y)>half)return;
     let dmg=magicSkillDamage(o,u.atk*(cb.mult||3.7));
     o.hp-=dmg;
-    o.stun=Math.max(o.stun||0,cb.stun||3);
+    applyUnitStun(u,o,cb.stun||3);
     burst(o.x,o.y,"#8ed8ff",18);
     impactFx(o.x,o.y,"magic",_LITE?3:7);
     floatText(o.x,o.y-18,Math.floor(dmg).toLocaleString(),"#9de7ff",18);
@@ -3703,7 +3724,7 @@ function procGalaxyImpact(u,m){
     if(!o.alive||Math.abs(o.x-m.x)>half||Math.abs(o.y-m.y)>half)return;
     let dmg=applyResistDamage((gi.flat||5000)+u.atk*(gi.atkMult||1.4),o.armor||0,o);
     o.hp-=dmg;
-    o.stun=Math.max(o.stun||0,gi.stun||2.5);
+    applyUnitStun(u,o,gi.stun||2.5);
     burst(o.x,o.y,"#ffd36b",18);
     impactFx(o.x,o.y,"phys",_LITE?3:7);
     floatText(o.x,o.y-18,Math.floor(dmg).toLocaleString(),"#fff2a8",18);
@@ -3720,7 +3741,7 @@ function procWindFruit(u,m){
     if(!o.alive||Math.abs(o.x-m.x)>half||Math.abs(o.y-m.y)>half)return;
     let dmg=magicSkillDamage(o,u.atk*(wf.mult||3.8));
     o.hp-=dmg;
-    o.stun=Math.max(o.stun||0,wf.stun||2.5);
+    applyUnitStun(u,o,wf.stun||2.5);
     burst(o.x,o.y,"#b9ffd0",16);
     impactFx(o.x,o.y,"magic",_LITE?3:7);
     floatText(o.x,o.y-18,Math.floor(dmg).toLocaleString(),"#c9ffe0",18);
@@ -3757,7 +3778,7 @@ function procBigMomMadness(u,m){
     if(!o.alive||Math.abs(o.x-m.x)>half||Math.abs(o.y-m.y)>half)return;
     let dmg=magicSkillDamage(o,u.atk*(bm.mult||4.5));
     o.hp-=dmg;
-    o.stun=Math.max(o.stun||0,bm.stun||2.5);
+    applyUnitStun(u,o,bm.stun||2.5);
     burst(o.x,o.y,"#ff8bd6",18);
     impactFx(o.x,o.y,"magic",_LITE?3:7);
     floatText(o.x,o.y-18,Math.floor(dmg).toLocaleString(),"#ffb8e5",18);
@@ -3776,7 +3797,7 @@ function procPunkGibson(u,m){
       let dmg=magicSkillDamage(o,pg.damage||5000);
       if(dist(o,m)<=((pg.centerRadius||250)/40)*G.tile)dmg*=1+(pg.centerBonus||.5);
       o.hp-=dmg;
-      o.stun=Math.max(o.stun||0,pg.stun||2);
+      applyUnitStun(u,o,pg.stun||2);
       burst(o.x,o.y,"#8ed8ff",16);
       impactFx(o.x,o.y,"magic",_LITE?3:7);
       floatText(o.x,o.y-18,Math.floor(dmg).toLocaleString(),"#9de7ff",18);
@@ -3825,7 +3846,7 @@ function procBlackBlade(u,m){
         if(o.boss)dmg+=magicSkillDamage(o,bb.bossFlat||300);
         else{
           dmg+=magicSkillDamage(o,u.atk*(bb.lineExtra||.20));
-          o.stun=Math.max(o.stun||0,bb.lineStun||.5);
+          applyUnitStun(u,o,bb.lineStun||.5);
         }
       }
       o.hp-=dmg;
@@ -4123,14 +4144,14 @@ function waveDifficulty(w){
 }
 function isBossWave(w){return w>0&&(w<=50?w%10===0:w%5===0)}
 function buildWave(w){
-  let boss=isBossWave(w),base=Math.round((64+w*24+Math.max(0,w-18)*3)*1.2),sp=33+Math.min(30,w),cnt=(boss&&w<=50)?0:35,q=[],sprite=VILLAINS[w%VILLAINS.length]||null,diff=waveDifficulty(w),bossTough=2.08,spdMult=waveSpeedMult(),mresMult=waveMresMult();
-  let hpMult=diff.hp*waveNormalHpMult(w), normalRelief=(w>=47&&w<=55)?.88:(w>=57&&w<=60)?.91:1, armorMult=diff.armor;
+  let boss=isBossWave(w),base=Math.round((64+w*24+Math.max(0,w-18)*3)*1.2),sp=33+Math.min(30,w),cnt=(boss&&w<=50)?0:35,q=[],sprite=VILLAINS[w%VILLAINS.length]||null,diff=waveDifficulty(w),bossTough=2.08,spdMult=waveSpeedMult(),mresMult=waveMresMult(),hardRelief=waveArmorMult(w);
+  let hpMult=diff.hp*waveNormalHpMult(w), normalRelief=(w>=47&&w<=55)?.88:(w>=57&&w<=60)?.91:1;
   for(let i=0;i<cnt;i++){
-    let elite=w>=45&&i%7===0,bulwark=w>=60&&i%11===0,unitHp=Math.round(base*hpMult*normalRelief*(elite?1.16:1)*(bulwark?1.08:1)),armor=Math.max(0,Math.round((w*1.45-6)*armorMult+(bulwark?8:0))),mres=Math.max(0,Math.round(((w*1.1-8)*armorMult+(elite?6:0))*mresMult));
+    let elite=w>=45&&i%7===0,bulwark=w>=60&&i%11===0,unitHp=Math.round(base*hpMult*normalRelief*(elite?1.16:1)*(bulwark?1.08:1)),armor=Math.max(0,Math.round(((w*1.45-6)*diff.armor+(bulwark?8:0))*hardRelief)),mres=Math.max(0,Math.round(((w*1.1-8)*diff.armor+(elite?6:0))*mresMult*hardRelief));
     q.push({hp:unitHp,max:unitHp,spd:Math.round(sp*(elite?.94:1)*spdMult),size:15+Math.min(9,w/7)+(bulwark?2:0),reward:Math.round((10+w)*0.7*WAVE_GOLD_RATE*waveGoldMult(w)),armor,armorBase:armor,mres,mresBase:mres,amp:0,color:bulwark?"#77623b":elite?"#4b6f94":i%2?"#527f55":"#326e8e",sprite:sprite?.id,idx:0,prog:0,alive:true,stun:0,dot:0,boss:false,name:bulwark?"중갑 몬스터":elite?"저항 몬스터":undefined})
   }
   if(boss){
-    let hp=Math.round(base*(16+Math.floor(w/10))*diff.bossHp*bossTough*waveBossHpMult(w)*(w===50?.88:1)),bd=VILLAINS[(w/5|0)%VILLAINS.length]||sprite,armor=Math.round(w*3.4*armorMult),mres=Math.round(w*2.4*armorMult*mresMult);
+    let hp=Math.round(base*(16+Math.floor(w/10))*diff.bossHp*bossTough*waveBossHpMult(w)*(w===50?.88:1)),bd=VILLAINS[(w/5|0)%VILLAINS.length]||sprite,armor=Math.round(w*3.4*diff.armor*hardRelief),mres=Math.round(w*2.4*diff.armor*mresMult*hardRelief);
     q.push({hp:hp,max:hp,spd:Math.round(29*spdMult),size:31,reward:Math.round((350+w*70)*0.7*WAVE_GOLD_RATE*waveGoldMult(w)),armor,armorBase:armor,mres,mresBase:mres,amp:0,color:"#8b0000",sprite:bd?.id,idx:0,prog:0,alive:true,stun:0,dot:0,boss:true,bossRound:w,name:(bd?.name||"BOSS")+" "+w})
   }
   return q
@@ -4377,7 +4398,19 @@ function loop(t){let dt=Math.min((t-G.last)/1000,.05);G.last=t;if(!G.paused){upd
   function newWorldLineHp(w){
     if(isGodMode()||w<53)return 0;
     const curve={53:2600000,54:3100000,55:3600000,56:4300000,57:5100000,58:6000000,59:7000000,60:8200000,61:9600000,62:11200000,63:13000000,64:15000000,65:17300000,66:19900000,67:22800000,68:26000000,69:29600000,70:33600000,71:38000000,72:42800000,73:48000000,74:53600000,75:59600000};
-    return curve[w]||0;
+    const relief=w>=71?.72:w>=66?.78:w>=61?.82:w>=60?.90:1;
+    return Math.round((curve[w]||0)*relief);
+  }
+  function hardTransitionLineHp(w){
+    if(isGodMode())return 0;
+    if(w===47)return 5100000;
+    if(w===48)return 5200000;
+    if(w===49)return 5600000;
+    return w===51||w===52?2500000:0;
+  }
+  function hardBossHpRelief(w){
+    if(isGodMode())return 1;
+    return w===50?.80:1;
   }
   buildWave=function(w){
     const q=__origBuildWave(w);
@@ -4389,8 +4422,8 @@ function loop(t){let dt=Math.min((t-G.last)/1000,.05);G.last=t;if(!G.paused){upd
       const hpScale=m.boss?waveBossHpMult(w):waveNormalHpMult(w);
       const midLineRelief=(!m.boss&&!isGodMode()&&w>=41&&w<=55)?({41:.82,42:.78,43:.74,44:.70,45:.66,46:.56,47:.52,48:.42,49:.44,51:.42,52:.40,53:.58,54:.66,55:.56}[w]||.82):1;
       const hardLateLineRelief=(!m.boss&&!isGodMode()&&w>=56&&w<=72)?(w<=60?.82:.86):1;
-      const nwHp=!m.boss?newWorldLineHp(w):0;
-      const scaledHp=nwHp||Math.max(1,Math.round(use.hp*hpScale*midLineRelief*hardLateLineRelief));
+      const nwHp=!m.boss?(hardTransitionLineHp(w)||newWorldLineHp(w)):0;
+      const scaledHp=nwHp||Math.max(1,Math.round(use.hp*hpScale*midLineRelief*hardLateLineRelief*hardBossHpRelief(w)));
       m.hp=scaledHp; m.max=scaledHp;
       m.armor=use.armor; m.armorBase=use.armor;
       m.mres=use.mres; m.mresBase=use.mres;
@@ -4873,31 +4906,33 @@ function tierUpgradeText(u){
     const targets=radius?G.monsters.filter(o=>o.alive&&Math.abs(c.x-o.x)<=radius&&Math.abs(c.y-o.y)<=radius):(m&&m.alive?[m]:[]);
     if(!targets.length)return false;
     let hit=0,total=0,hitCount=Math.max(1,Math.min(40,p.hitCount||1));
-    for(const o of targets){
-      const single=originalSkillDamage(u,o,p,sk);
-      const dmg=single*hitCount;
-      o.hp-=dmg; total+=dmg; hit++;
-      if(p.stun)applyUnitStun(u,o,p.stun);
-      if(p.slowPct){o.slowPct=Math.max(o.slowPct||0,p.slowPct);o.slowT=Math.max(o.slowT||0,Math.max(2,p.stun||0))}
-      if(p.armorRed&&typeof applyArmorBreak==='function')applyArmorBreak(o,p.armorRed,originalStackKey(u,sk,p,"AR"));
-      if(p.conditionalArmorRed&&typeof applyArmorBreak==='function'){
-        const nowBreak=Object.values(o.armorBreaks||{}).reduce((s,v)=>s+breakAmount(v),0);
-        if(nowBreak>=p.conditionalArmorRed.threshold)applyArmorBreak(o,p.conditionalArmorRed.amount,originalStackKey(u,sk,p,"조건방깎"),9999);
+    withUnitStunSide(c,()=>{
+      for(const o of targets){
+        const single=originalSkillDamage(u,o,p,sk);
+        const dmg=single*hitCount;
+        o.hp-=dmg; total+=dmg; hit++;
+        if(p.stun)applyUnitStun(u,o,p.stun);
+        if(p.slowPct){o.slowPct=Math.max(o.slowPct||0,p.slowPct);o.slowT=Math.max(o.slowT||0,Math.max(2,p.stun||0))}
+        if(p.armorRed&&typeof applyArmorBreak==='function')applyArmorBreak(o,p.armorRed,originalStackKey(u,sk,p,"AR"));
+        if(p.conditionalArmorRed&&typeof applyArmorBreak==='function'){
+          const nowBreak=Object.values(o.armorBreaks||{}).reduce((s,v)=>s+breakAmount(v),0);
+          if(nowBreak>=p.conditionalArmorRed.threshold)applyArmorBreak(o,p.conditionalArmorRed.amount,originalStackKey(u,sk,p,"조건방깎"),9999);
+        }
+        if((p.mresRed||p.mresRedPct)&&typeof applyMagicBreak==='function'){
+          const pctCut=p.mresRedPct?Math.max(1,Math.round(((o.mresBase??o.mres??0)||0)*p.mresRedPct)):0;
+          const cut=applyMagicBreak(o,(p.mresRed||0)+pctCut,originalStackKey(u,sk,p,"MR"));
+          if(cut>0)floatText(o.x,o.y-28,"MR-"+cut,"#88aaff",14);
+        }
+        const magic=(p.dmgType||u.dmgType)==='magic';
+        if(hitCount<=1){
+          war3EffectFx(o.x,o.y,war3EffectTypeFromText((sk.title||"")+" "+(sk.desc||""),magic),_LITE?1:2,1,def(u)?.tier||"");
+          burst(o.x,o.y,magic?'#7ed6ff':'#ffb347',_LITE?5:10);
+        }else if(hit<4&&G.fx.length<18){
+          burst(o.x,o.y,magic?'#7ed6ff':'#ffb347',_LITE?2:3);
+        }
+        if(o.hp<=0&&o.alive){o.alive=false;G.kills++;G.gold+=Math.floor(o.reward*(1+G.mods.gold));}
       }
-      if((p.mresRed||p.mresRedPct)&&typeof applyMagicBreak==='function'){
-        const pctCut=p.mresRedPct?Math.max(1,Math.round(((o.mresBase??o.mres??0)||0)*p.mresRedPct)):0;
-        const cut=applyMagicBreak(o,(p.mresRed||0)+pctCut,originalStackKey(u,sk,p,"MR"));
-        if(cut>0)floatText(o.x,o.y-28,"MR-"+cut,"#88aaff",14);
-      }
-      const magic=(p.dmgType||u.dmgType)==='magic';
-      if(hitCount<=1){
-        war3EffectFx(o.x,o.y,war3EffectTypeFromText((sk.title||"")+" "+(sk.desc||""),magic),_LITE?1:2,1,def(u)?.tier||"");
-        burst(o.x,o.y,magic?'#7ed6ff':'#ffb347',_LITE?5:10);
-      }else if(hit<4&&G.fx.length<18){
-        burst(o.x,o.y,magic?'#7ed6ff':'#ffb347',_LITE?2:3);
-      }
-      if(o.hp<=0&&o.alive){o.alive=false;G.kills++;G.gold+=Math.floor(o.reward*(1+G.mods.gold));}
-    }
+    });
     originalSkillCastText(u,c,sk,p,(p.dmgType||u.dmgType)==='magic');
     if(hitCount>1)floatText(c.x,c.y-52,"HIT x"+hitCount,"#ffef9a",15);
     floatText(c.x,c.y-12,Math.floor(total).toLocaleString(),'#ffffff',16);
@@ -5068,14 +5103,17 @@ function tierUpgradeText(u){
         u.origSkillTick[key]-=ticks*ps.interval;
         const radius=webSkillRange(ps.range||600);
         let total=0,hit=0;
-        G.monsters.forEach(o=>{
-          if(!o.alive||Math.abs(u.x-o.x)>radius||Math.abs(u.y-o.y)>radius)return;
-          const dmg=ps.dmg*ticks;
-          o.hp-=dmg;total+=dmg;hit++;
-          if(ps.stun)applyUnitStun(u,o,ps.stun);
-          if(ps.slowPct){o.slowPct=Math.max(o.slowPct||0,ps.slowPct);o.slowT=Math.max(o.slowT||0,2)}
-          if(ps.armorRed&&typeof applyArmorBreak==='function')applyArmorBreak(o,ps.armorRed,ps.noStackGroup?"origNoStack:"+ps.noStackGroup+":AR":u.id+':'+ps.title);
-          if(o.hp<=0&&o.alive){o.alive=false;G.kills++;G.gold+=Math.floor(o.reward*(1+G.mods.gold));}
+        const sideAnchor=G.monsters.find(o=>o.alive&&Math.abs(u.x-o.x)<=radius&&Math.abs(u.y-o.y)<=radius);
+        withUnitStunSide(sideAnchor,()=>{
+          G.monsters.forEach(o=>{
+            if(!o.alive||Math.abs(u.x-o.x)>radius||Math.abs(u.y-o.y)>radius)return;
+            const dmg=ps.dmg*ticks;
+            o.hp-=dmg;total+=dmg;hit++;
+            if(ps.stun)applyUnitStun(u,o,ps.stun);
+            if(ps.slowPct){o.slowPct=Math.max(o.slowPct||0,ps.slowPct);o.slowT=Math.max(o.slowT||0,2)}
+            if(ps.armorRed&&typeof applyArmorBreak==='function')applyArmorBreak(o,ps.armorRed,ps.noStackGroup?"origNoStack:"+ps.noStackGroup+":AR":u.id+':'+ps.title);
+            if(o.hp<=0&&o.alive){o.alive=false;G.kills++;G.gold+=Math.floor(o.reward*(1+G.mods.gold));}
+          });
         });
         if(hit){
           const magic=(ps.dmgType||u.dmgType)==='magic';
@@ -5532,6 +5570,32 @@ function skipBreak() {
   $("breakBanner").classList.remove("on");
   setTimeout(startWave, 120);
 }
+function applyWaveStartSync(msg){
+  if(!msg||msg.from===G.playerId)return;
+  let w=+msg.wave||G.wave;
+  if(w>0&&w!==G.wave){
+    G.wave=w;
+    G.waveRun=false;
+    G.spawnQ=[];
+    G.spawnT=0;
+  }
+  if(G.startedWaves&&G.startedWaves[G.wave]&&!G.waveRun&&!(G.spawnQ||[]).length)delete G.startedWaves[G.wave];
+  G.breakSkipped=true;
+  G.breakActive=false;
+  $("breakBanner")?.classList.remove("on");
+  if(!G.waveRun)startWave();
+  if(typeof msg.waveT==="number")G.waveT=msg.waveT;
+  if(typeof msg.waveMax==="number")G.waveMax=msg.waveMax;
+}
+const __ordWaveStart=startWave;
+startWave=function(){
+  let before=G.waveRun,w=G.wave;
+  __ordWaveStart();
+  if(G.gameMode==="multi"&&isRoomHost()&&!before&&G.waveRun&&G.wave===w){
+    roomBroadcast({type:"wave_start",wave:G.wave,waveT:G.waveT,waveMax:G.waveMax,from:G.playerId||PEER?.id,slot:G.playerSlot||MY_SLOT});
+    syncRoomState(true);
+  }
+};
 
 // ===== 모드 선택 =====
 function setDifficulty(mode) {
@@ -5693,6 +5757,9 @@ function handleHostMsg(conn, msg) {
       applyRoomAction('speed', msg.speed);
       broadcastToAll(msg, conn.peer);
     }
+  } else if (msg.type === 'wave_start') {
+    applyWaveStartSync(msg);
+    broadcastToAll(msg, conn.peer);
   } else if (msg.type === 'story_damage') {
     hostApplyStoryDamage(msg);
   } else if (msg.type === 'story_clear') {
@@ -5796,6 +5863,8 @@ function handleGuestMsg(msg, conn) {
     applyRoomAction('pause', msg.value);
   } else if (msg.type === 'speed_sync') {
     applyRoomAction('speed', msg.speed);
+  } else if (msg.type === 'wave_start') {
+    applyWaveStartSync(msg);
   } else if (msg.type === 'story_clear') {
     applyRemoteStoryClear(msg);
   } else if (msg.type === 'story_damage') {
@@ -6148,6 +6217,8 @@ function fbHandleMessage(msg) {
     applyRoomAction("pause", msg.value);
   } else if (msg.type === "speed_sync") {
     applyRoomAction("speed", msg.speed);
+  } else if (msg.type === "wave_start") {
+    applyWaveStartSync(msg);
   } else if (msg.type === "story_damage") {
     hostApplyStoryDamage(msg);
   } else if (msg.type === "story_clear") {
@@ -6160,6 +6231,9 @@ function fbHandleMessage(msg) {
 
 function fbApplyHostClock(hostState) {
   if (!hostState || G.gameMode !== "multi" || isRoomHost()) return;
+  let hostStamp = +hostState.updatedAt || 0;
+  if (hostStamp && G._lastHostClockStamp && hostStamp < G._lastHostClockStamp) return;
+  if (hostStamp) G._lastHostClockStamp = hostStamp;
 
   if (typeof hostState.speed === "number" && hostState.speed !== G.speed) {
     applyRoomAction("speed", hostState.speed);
@@ -6171,6 +6245,18 @@ function fbApplyHostClock(hostState) {
   let hostWave = +hostState.wave || G.wave;
   let hostWaveT = typeof hostState.waveT === "number" ? hostState.waveT : null;
   let hostWaveMax = +hostState.waveMax || waveDuration(hostWave);
+  const resumeSyncedWave = () => {
+    G.breakSkipped = true;
+    G.breakActive = false;
+    $("breakBanner")?.classList.remove("on");
+    if ((G.spawnQ||[]).length || (G.monsters||[]).length) {
+      G.waveRun = true;
+      if ($("next")) $("next").disabled = true;
+      return;
+    }
+    if (G.startedWaves && G.startedWaves[hostWave]) delete G.startedWaves[hostWave];
+    startWave();
+  };
 
   if (hostWave !== G.wave) {
     let oldWave = G.wave;
@@ -6183,8 +6269,8 @@ function fbApplyHostClock(hostState) {
     G.waveRun = false;
     G.spawnQ = [];
     G.spawnT = 0;
-    if (hostState.waveRun) {
-      startWave();
+    if (hostState.waveRun === true) {
+      resumeSyncedWave();
       G.waveT = hostWaveT ?? G.waveT;
       G.waveMax = hostWaveMax;
     }
@@ -6194,12 +6280,13 @@ function fbApplyHostClock(hostState) {
 
   G.waveMax = hostWaveMax;
   if (hostWaveT !== null && Math.abs((G.waveT || 0) - hostWaveT) > 1) G.waveT = hostWaveT;
-  if (hostState.waveRun && !G.waveRun) {
-    startWave();
+  if (hostState.waveRun === true && !G.waveRun) {
+    resumeSyncedWave();
     G.waveT = hostWaveT ?? G.waveT;
     G.waveMax = hostWaveMax;
   }
-  if (!hostState.waveRun && G.waveRun) {
+  if (hostState.waveRun === false && G.waveRun) {
+    if (((hostState.spawnCount||0)>0 || (hostState.monsterCount||0)>0) && (hostWaveT??hostWaveMax)>0) return;
     G.waveRun = false;
     G.spawnQ = [];
     G.waveT = hostWaveT ?? hostWaveMax;
@@ -7473,11 +7560,16 @@ window.addEventListener("resize",()=>{if(!mobileUiActive())closeMobileInfoSheet(
     let key=craftReadyStateKey();
     if(!force&&G._craftBadgeKey===key)return;
     G._craftBadgeKey=key;
-    let s=craftReadySummary();
-    btn.classList.toggle("craftReady",s.count>0);
-    btn.textContent=s.count>0?("조합 가능 "+s.count+"개"):"조합";
-    btn.dataset.mobileLabel=s.count>0?("조합"+s.count):"조합";
-    btn.title=s.count>0?("제작 가능: "+s.label+" 외 "+Math.max(0,s.count-1)+"개"):"조합";
+    const apply=()=>{
+      G._craftBadgeTimer=0;
+      let s=craftReadySummary();
+      btn.classList.toggle("craftReady",s.count>0);
+      btn.textContent=s.count>0?("조합 가능 "+s.count+"개"):"조합";
+      btn.dataset.mobileLabel=s.count>0?("조합"+s.count):"조합";
+      btn.title=s.count>0?("제작 가능: "+s.label+" 외 "+Math.max(0,s.count-1)+"개"):"조합";
+    };
+    if(force)return apply();
+    if(!G._craftBadgeTimer)G._craftBadgeTimer=setTimeout(apply,0);
   }
   window.updateCraftReadyBadge=updateCraftReadyBadge;
   function unitSortValue(u){
@@ -7499,12 +7591,11 @@ window.addEventListener("resize",()=>{if(!mobileUiActive())closeMobileInfoSheet(
   }
   function renderSortedStackCard(g){
     let d=def(g.unit),img=IMG[d.id],pic=img&&img!==false?'<img src="'+img.src+'">':'<img alt="">',sel=G.sel&&!G.sel.placed&&G.sel.id===g.unit.id,rerollUid=g.rerollUid;
-    let trait=g.traitCount?'<span class="traitBadge">특성 '+g.traitCount+'</span>':"";
-    return '<div class="unitCard stack '+(sel?'sel':'')+'" data-stack="'+g.unit.id+'">'+pic+'<div><div class="uName" style="color:'+tier(d).color+'">'+esc(d.name)+'</div><div class="uSub">'+tier(d).name+' / 대기 '+g.count+'기</div>'+trait+roleTagsHtml(g.unit,3)+(rerollUid?rareRerollButtonHtml(rerollUid):'')+stackBatchButtonHtml(g.unit.id,g.count)+'</div><span class="countBadge">x'+g.count+'</span></div>';
+    return '<div class="unitCard stack '+(sel?'sel':'')+'" data-stack="'+g.unit.id+'">'+pic+'<div><div class="uName" style="color:'+tier(d).color+'">'+esc(d.name)+'</div><div class="uSub">'+tier(d).name+'</div>'+(rerollUid?rareRerollButtonHtml(rerollUid):'')+stackBatchButtonHtml(g.unit.id,g.count)+'</div><span class="countBadge">x'+g.count+'</span></div>';
   }
   function renderSortedCard(u){
     let d=def(u),img=IMG[d.id],pic=img&&img!==false?'<img src="'+img.src+'">':'<img alt="">';
-    return '<div class="unitCard '+(u===G.sel?'sel':'')+'" data-uid="'+u.uid+'">'+pic+'<div><div class="uName" style="color:'+tier(d).color+'">'+esc(d.name)+'</div><div class="uSub">'+tier(d).name+' Lv.'+u.lvl+' ATK '+unitAtkText(u)+'</div>'+traitBadgeHtml(u)+roleTagsHtml(u,3)+rareRerollButtonHtml(u.uid)+'</div></div>';
+    return '<div class="unitCard '+(u===G.sel?'sel':'')+'" data-uid="'+u.uid+'">'+pic+'<div><div class="uName" style="color:'+tier(d).color+'">'+esc(d.name)+'</div><div class="uSub">'+tier(d).name+'</div>'+rareRerollButtonHtml(u.uid)+'</div></div>';
   }
   const __finalRenderLists=renderLists;
   renderLists=function(){
@@ -7853,16 +7944,30 @@ window.addEventListener("resize",()=>{if(!mobileUiActive())closeMobileInfoSheet(
   renderRecipes=function(){
     syncAdminCraftUi();
     let q=($("recipeSearch")?.value||"").toLowerCase(),grid=$("recipeGrid");if(!grid)return __utilityRenderRecipes();
-    let rows=RECIPES.filter(r=>{let d=UNIT_MAP[r.resultId],txt=(d.name+" "+r.code+" "+mats(r)).toLowerCase();return recipeTierMatch(d.tier,G.recipeTier)&&(!q||txt.includes(q))});
+    if(G._recipeRenderTimer){clearTimeout(G._recipeRenderTimer);G._recipeRenderTimer=0}
+    let rows=RECIPES.map(r=>{
+      let d=UNIT_MAP[r.resultId],txt=(d.name+" "+r.code+" "+mats(r)).toLowerCase();
+      if(!recipeTierMatch(d.tier,G.recipeTier)||q&&!txt.includes(q))return null;
+      return {r,d,ok:canCraft(r),utility:missingUtilityScore(r)};
+    }).filter(Boolean);
     rows.sort((a,b)=>{
-      let ca=canCraft(a)?1:0,cb=canCraft(b)?1:0,ua=missingUtilityScore(a),ub=missingUtilityScore(b),da=UNIT_MAP[a.resultId],db=UNIT_MAP[b.resultId];
-      return (cb-ca)||(ub-ua)||(tierRank(db.tier)-tierRank(da.tier))||((db.level||0)-(da.level||0))||(da.name||"").localeCompare(db.name||"");
+      return ((b.ok?1:0)-(a.ok?1:0))||(b.utility-a.utility)||(tierRank(b.d.tier)-tierRank(a.d.tier))||((b.d.level||0)-(a.d.level||0))||(a.d.name||"").localeCompare(b.d.name||"");
     });
-    grid.innerHTML=rows.map(r=>{
-      let d=UNIT_MAP[r.resultId],ok=canCraft(r),img=IMG[d.id],pic=img&&img!==false?'<img src="'+img.src+'">':'<img>',pin=G.pinnedRecipe===r.code;
-      let hint=(ok?'<div class="recipeHintLine">바로 조합 가능</div>':'')+utilityHintHtml(r);
+    const card=x=>{
+      let r=x.r,d=x.d,ok=x.ok,img=IMG[d.id],pic=img&&img!==false?'<img src="'+img.src+'">':'<img>',pin=G.pinnedRecipe===r.code;
+      let hint=(ok?'<div class="recipeHintLine">바로 조합 가능</div>':'')+(x.utility>0?utilityHintHtml(r):"");
       return '<div class="recipe '+(ok?'can readyTop ':'')+(pin?'pinned':'')+'">'+pic+'<div class="recipeName" style="color:'+tier(d).color+'">'+((r.hidden||d.tier==="hidden")?'[히든] ':'')+esc(d.name)+'</div><div class="recipeMats">'+matsHtml(r)+'</div>'+hint+'<button '+(ok?'':'disabled')+' onclick=\'craft('+safeJsArg(r.code)+')\'>'+(G.adminCraft?'운영자 생성':'조합')+'</button><button class="pinBtn '+(pin?'on':'')+'" onclick=\'pinRecipe('+safeJsArg(r.code)+')\'>'+(pin?'목표 해제':'목표 고정')+'</button></div>';
-    }).join("");
+    };
+    let i=0,chunk=80;
+    grid.innerHTML=rows.slice(0,chunk).map(card).join("");
+    i=chunk;
+    const append=()=>{
+      if(i>=rows.length)return;
+      grid.insertAdjacentHTML("beforeend",rows.slice(i,i+chunk).map(card).join(""));
+      i+=chunk;
+      G._recipeRenderTimer=setTimeout(append,0);
+    };
+    if(i<rows.length)G._recipeRenderTimer=setTimeout(append,0);
     if(typeof window.updateCraftReadyBadge==="function")window.updateCraftReadyBadge();
   };
   function bossRemainText(remain){return remain<=0?"이번 라운드 안에":"다음 "+remain+"라운드 안에"}
@@ -7898,6 +8003,31 @@ window.addEventListener("resize",()=>{if(!mobileUiActive())closeMobileInfoSheet(
   const __deckStart=start;
   start=function(){G.targetMode=G.targetMode||"auto";G.bossSurvivalWarned={};return __deckStart()};
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",syncTargetControls);else syncTargetControls();
+})();
+// ===== LIGHTWEIGHT CLICK RENDER PATH =====
+(function(){
+  const __perfRenderAll=renderAll;
+  renderAll=function(){
+    ui();
+    if($("combineModal")?.classList.contains("open"))renderRecipes();
+    renderStory();
+  };
+})();
+// ===== LOW TIER STUN GATE =====
+(function(){
+  const __lowTierStunGateDamage=damage;
+  damage=function(u,m,dmgMult){
+    return withUnitStunSide(m,()=>{
+      if(canUnitApplyStun(u))return __lowTierStunGateDamage(u,m,dmgMult);
+      const before=new Map((G.monsters||[]).map(o=>[o,o.stun||0]));
+      const r=__lowTierStunGateDamage(u,m,dmgMult);
+      (G.monsters||[]).forEach(o=>{
+        const prev=before.has(o)?before.get(o):0;
+        if((o.stun||0)>prev)o.stun=prev;
+      });
+      return r;
+    });
+  };
 })();
 // ===== IN-GAME QUICK SETTINGS =====
 (function(){
